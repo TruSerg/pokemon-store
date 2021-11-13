@@ -4,6 +4,7 @@ import * as actions from "../actions";
 const defaultState = {
   list: [],
   isLoading: false,
+  currentPage: 1,
   error: null,
 };
 
@@ -22,6 +23,10 @@ const pokemonsPageReducers = handleActions(
       ...state,
       error: payload.response,
       isLoading: false,
+    }),
+    [actions.CHANGE_PAGE]: (state, { payload }) => ({
+      ...state,
+      currentPage: payload,
     }),
   },
   defaultState

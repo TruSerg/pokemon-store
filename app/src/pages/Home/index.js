@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "../../commonComponents/Header";
 
 const HomePage = () => {
   return (

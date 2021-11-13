@@ -6,7 +6,8 @@ export const NAV_TYPE_NAMES = {
 };
 
 export const NAV_CONFIG = {
-  [NAV_TYPE_NAMES.PUBLIC]: [
+  [NAV_TYPE_NAMES.PUBLIC]: [],
+  [NAV_TYPE_NAMES.PRIVATE]: [
     {
       label: "Home",
       path: ROUTES.HOME,
@@ -15,8 +16,6 @@ export const NAV_CONFIG = {
       label: "Login",
       path: ROUTES.LOGIN,
     },
-  ],
-  [NAV_TYPE_NAMES.PRIVATE]: [
     {
       label: "Pokemons",
       path: ROUTES.POKEMONS_PAGE,
