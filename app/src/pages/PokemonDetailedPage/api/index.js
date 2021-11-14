@@ -1,3 +1,3 @@
 import api from "../../../http";
 
-export const getPokemonDetail = (name) => api.get(`products/${name}`);
+export const getPokemonDetail = (id) => api.get(`products/${id}`);

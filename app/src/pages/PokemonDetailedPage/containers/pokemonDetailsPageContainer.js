@@ -8,16 +8,29 @@ import { GET_POKEMON_DETAILS_REQUEST } from "../actions";
 
 const PokemonDetailsPageContainer = () => {
   const dispatch = useDispatch();
+  const { id } = useParams();
 
   const { info, isLoading } = useSelector((state) => state.pokemonDetails);
 
-  const { name } = useParams();
-
   useEffect(() => {
-    dispatch(GET_POKEMON_DETAILS_REQUEST(name));
+    dispatch(GET_POKEMON_DETAILS_REQUEST(id));
   }, [dispatch]);
 
-  return <PokemonDetailsPageLayout info={info} isLoading={isLoading} />;
+  const pokemonDetails = {
+    id: info.id,
+    name: info.name,
+    image: info.image,
+    price: info.price,
+  };
+
+  return (
+    <PokemonDetailsPageLayout
+      info={info}
+      isLoading={isLoading}
+      pokemonDetails={pokemonDetails}
+      stats={info.stats}
+    />
+  );
 };
 
 export default PokemonDetailsPageContainer;

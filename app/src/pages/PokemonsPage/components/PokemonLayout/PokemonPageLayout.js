@@ -22,12 +22,14 @@ const PokemonPageLayout = ({
             <CircularProgress />
           </div>
         ) : (
-          list.map(({ name, url }) => (
+          list.map(({ id, name, image, price }) => (
             <div className={styles.card}>
               <MaterialCard
-                key={url}
+                key={id}
                 name={name}
-                handleGoToDetails={() => handleGoToDetails(name)}
+                image={image}
+                price={price}
+                handleGoToDetails={() => handleGoToDetails(id)}
               />
             </div>
           ))
@@ -48,7 +50,7 @@ PokemonPageLayout.propTypes = {
   list: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     })
   ),
 };

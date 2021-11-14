@@ -5,19 +5,23 @@ import { useHistory } from "react-router-dom";
 import { CHANGE_PAGE, GET_POKEMONS_REQUEST } from "../actions";
 
 import PokemonPageLayout from "../components/PokemonLayout/PokemonPageLayout";
+import { ROUTES } from "../../../routes/routeNames";
 
 const PokemonPageContainer = () => {
   const dispatch = useDispatch();
 
   const history = useHistory();
 
-  const { list, isLoading, currentPage } = useSelector(
+  const { id, list, isLoading, currentPage } = useSelector(
     (state) => state.pokemonsPage
   );
 
-  const handleGoToDetails = useCallback((pokemonName) => {
-    history.push(`/products/${pokemonName}`);
-  }, []);
+  const handleGoToDetails = useCallback(
+    (id) => {
+      history.push(`${ROUTES.POKEMONS_PAGE}/${id}`);
+    },
+    [history]
+  );
 
   const handlePageChange = useCallback(
     (page) => {
