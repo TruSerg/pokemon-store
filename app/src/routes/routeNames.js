@@ -1,6 +1,6 @@
 export const ROUTES = {
-  HOME: "/",
+  LOGIN: "/",
+  REGISTRATION: "/signup",
   POKEMONS_PAGE: "/pokemon",
   POKEMONS_DETAILS: "/pokemon/:id",
-  LOGIN: "/login",
 };

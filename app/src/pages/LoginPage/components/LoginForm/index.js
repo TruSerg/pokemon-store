@@ -1,22 +1,30 @@
-import React from "react";
-import { Button } from "@mui/material";
-
-const LoginForm = ({ formValue, onChange, onSubmit }) => {
+const LoginForm = ({
+  formData,
+  onChange,
+  onSubmit,
+  handleGoToSignup,
+  error,
+  buttonDisabled,
+}) => {
   return (
     <form onSubmit={onSubmit}>
       <input
         type="email"
-        value={formValue.email}
+        value={formData.email}
         name="email"
         onChange={onChange}
       />
       <input
         type="password"
-        value={formValue.password}
+        value={formData.password}
         name="password"
         onChange={onChange}
       />
-      <button role="submit">Login</button>
+      {error && <div>{error}</div>}
+      <button disabled={buttonDisabled} role="submit">
+        LOGIN
+      </button>
+      <button onClick={handleGoToSignup}>SIGNUP</button>
     </form>
   );
 };

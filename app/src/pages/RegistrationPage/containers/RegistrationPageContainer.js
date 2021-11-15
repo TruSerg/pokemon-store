@@ -1,55 +1,60 @@
-import LoginForm from "../components/LoginForm";
+import RegistrationForm from "../components/RegistrationForm/RegistrationFormLayout";
 import { useForm } from "../../../hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useLayoutEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-import { LOG_IN_REQUEST } from "../actions";
+import { SIGN_UP_REQUEST } from "../actions";
 import { ROUTES } from "../../../routes/routeNames";
 
-const LoginPageContainer = () => {
+const RegistrationPageContainer = () => {
   const dispatch = useDispatch();
 
   const history = useHistory();
 
-  const { isLoading, isAuth, error } = useSelector((state) => state.auth);
+  const { isAuth } = useSelector((state) => state.auth);
 
   const [formData, handleChange] = useForm({
     email: "",
+    firstName: "",
+    lastName: "",
+    gender: "",
+    phone: "",
     password: "",
+    passwordConfirm: "",
   });
 
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault();
-      dispatch(LOG_IN_REQUEST(formData));
+      dispatch(SIGN_UP_REQUEST(formData));
     },
     [formData]
   );
 
-  const handleGoToSignup = useCallback(() => {
-    history.push(ROUTES.REGISTRATION);
-  }, []);
-
   useLayoutEffect(() => {
     if (isAuth) {
-      history.push(ROUTES.POKEMONS_PAGE);
+      history.push(ROUTES.LOGIN);
     }
   }, [isAuth]);
 
-  const buttonDisabled = (formData.email && formData.password) === "";
+  const buttonDisabled =
+    (formData.email,
+    formData.firstName,
+    formData.lastName,
+    formData.gender,
+    formData.phone,
+    formData.password,
+    formData.passwordConfirm) === "";
 
   return (
-    <LoginForm
+    <RegistrationForm
       formData={formData}
       onChange={handleChange}
       onSubmit={handleSubmit}
-      handleGoToSignup={handleGoToSignup}
-      isLoading={isLoading}
-      error={error}
       buttonDisabled={buttonDisabled}
     />
   );
 };
 
-export default LoginPageContainer;
+export default RegistrationPageContainer;
