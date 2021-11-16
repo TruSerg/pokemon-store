@@ -24,7 +24,7 @@ const LoginPageContainer = () => {
       event.preventDefault();
       dispatch(LOG_IN_REQUEST(formData));
     },
-    [formData]
+    [formData, dispatch]
   );
 
   const handleGoToSignup = useCallback(() => {

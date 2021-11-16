@@ -1,4 +1,15 @@
-const RegistrationForm = ({ formData, onChange, onSubmit, buttonDisabled }) => {
+import BasicSelect from "../../../../commonComponents/Select";
+import styles from "../../../PokemonsPage/components/PokemonLayout/styles.module.scss";
+import { CircularProgress } from "@mui/material";
+
+const RegistrationForm = ({
+  isLoading,
+  formData,
+  onSubmit,
+  onChange,
+  buttonDisabled,
+  error,
+}) => {
   return (
     <form onSubmit={onSubmit}>
       <input
@@ -10,24 +21,18 @@ const RegistrationForm = ({ formData, onChange, onSubmit, buttonDisabled }) => {
       <input
         type="text"
         value={formData.firstName}
-        name="text"
+        name="firstName"
         onChange={onChange}
       />
       <input
         type="text"
         value={formData.lastName}
-        name="text"
-        onChange={onChange}
-      />
-      <input
-        type="text"
-        value={formData.gender}
-        name="text"
+        name="lastName"
         onChange={onChange}
       />
       <input
         type="phone"
-        value={formData.gender}
+        value={formData.phone}
         name="phone"
         onChange={onChange}
       />
@@ -38,11 +43,20 @@ const RegistrationForm = ({ formData, onChange, onSubmit, buttonDisabled }) => {
         onChange={onChange}
       />
       <input
-        value={formData.gender}
-        name="gender"
-        label="GENDER"
+        type="password"
+        value={formData.passwordConfirm}
+        name="passwordConfirm"
         onChange={onChange}
       />
+      <div>
+        <BasicSelect
+          value={formData.gender}
+          name="gender"
+          label="GENDER"
+          onChange={onChange}
+        />
+      </div>
+      {error && <div>{error}</div>}
       <button disabled={buttonDisabled} role="submit">
         SIGNUP
       </button>

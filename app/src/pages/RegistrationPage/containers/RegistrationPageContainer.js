@@ -12,7 +12,7 @@ const RegistrationPageContainer = () => {
 
   const history = useHistory();
 
-  const { isAuth } = useSelector((state) => state.auth);
+  const { isLoading, isAuth, error } = useSelector((state) => state.signup);
 
   const [formData, handleChange] = useForm({
     email: "",
@@ -27,9 +27,14 @@ const RegistrationPageContainer = () => {
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault();
-      dispatch(SIGN_UP_REQUEST(formData));
+
+      const { passwordConfirm, ...otherFields } = formData;
+
+      if (formData.password === formData.passwordConfirm) {
+        dispatch(SIGN_UP_REQUEST(otherFields));
+      }
     },
-    [formData]
+    [formData, dispatch]
   );
 
   useLayoutEffect(() => {
@@ -49,10 +54,12 @@ const RegistrationPageContainer = () => {
 
   return (
     <RegistrationForm
+      isLoading={isLoading}
       formData={formData}
       onChange={handleChange}
       onSubmit={handleSubmit}
       buttonDisabled={buttonDisabled}
+      error={error}
     />
   );
 };

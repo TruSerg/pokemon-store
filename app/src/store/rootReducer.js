@@ -6,6 +6,7 @@ import storage from "redux-persist/lib/storage";
 import pokemonsPageReducers from "../pages/PokemonsPage/reducers";
 import pokemonDetailsPageReducer from "../pages/PokemonDetailedPage/reducers";
 import authReducer from "../pages/LoginPage/reducers";
+import authUpReducer from "../pages/RegistrationPage/reducers";
 
 const authBlackListedFields = createBlacklistFilter("auth", [
   "isLoading",
@@ -21,6 +22,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  signup: authUpReducer,
   pokemonsPage: pokemonsPageReducers,
   pokemonDetails: pokemonDetailsPageReducer,
 });
