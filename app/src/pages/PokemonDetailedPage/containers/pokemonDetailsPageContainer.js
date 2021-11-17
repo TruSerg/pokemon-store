@@ -12,23 +12,19 @@ const PokemonDetailsPageContainer = () => {
 
   const { info, isLoading } = useSelector((state) => state.pokemonDetails);
 
+  const abilitiesArray = info.abilities;
+  const statsArray = info.stats;
+
   useEffect(() => {
     dispatch(GET_POKEMON_DETAILS_REQUEST(id));
   }, [dispatch]);
-
-  const pokemonDetails = {
-    id: info.id,
-    name: info.name,
-    image: info.image,
-    price: info.price,
-  };
 
   return (
     <PokemonDetailsPageLayout
       info={info}
       isLoading={isLoading}
-      pokemonDetails={pokemonDetails}
-      stats={info.stats}
+      abilitiesArray={abilitiesArray}
+      statsArray={statsArray}
     />
   );
 };

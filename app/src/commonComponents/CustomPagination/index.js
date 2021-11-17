@@ -7,7 +7,7 @@ const CustomPagination = ({ currentPage, onPageChange, pageCount }) => {
       count={pageCount}
       page={currentPage}
       onChange={(event, page) => onPageChange(page)}
-      count={10}
+      count={20}
       variant="outlined"
       shape="rounded"
     />

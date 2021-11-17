@@ -7,6 +7,8 @@ import { useHistory } from "react-router-dom";
 import { LOG_IN_REQUEST } from "../actions";
 import { ROUTES } from "../../../routes/routeNames";
 
+import isEmail from "validator/es/lib/isEmail";
+
 const LoginPageContainer = () => {
   const dispatch = useDispatch();
 
@@ -19,12 +21,18 @@ const LoginPageContainer = () => {
     password: "",
   });
 
+  const isEmailValid = isEmail(formData.email);
+  const isPasswordValid = formData.password.length > 0;
+  const isFormValid = isEmailValid && isPasswordValid;
+
   const handleSubmit = useCallback(
     (event) => {
-      event.preventDefault();
-      dispatch(LOG_IN_REQUEST(formData));
+      if (isFormValid) {
+        event.preventDefault();
+        dispatch(LOG_IN_REQUEST(formData));
+      }
     },
-    [formData, dispatch]
+    [formData, isFormValid]
   );
 
   const handleGoToSignup = useCallback(() => {
@@ -37,17 +45,15 @@ const LoginPageContainer = () => {
     }
   }, [isAuth]);
 
-  const buttonDisabled = (formData.email && formData.password) === "";
-
   return (
     <LoginForm
+      isLoading={isLoading}
+      isFormValid={isFormValid}
       formData={formData}
       onChange={handleChange}
       onSubmit={handleSubmit}
       handleGoToSignup={handleGoToSignup}
-      isLoading={isLoading}
       error={error}
-      buttonDisabled={buttonDisabled}
     />
   );
 };

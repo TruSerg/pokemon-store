@@ -12,7 +12,7 @@ const PokemonPageContainer = () => {
 
   const history = useHistory();
 
-  const { id, list, isLoading, currentPage } = useSelector(
+  const { list, isLoading, currentPage } = useSelector(
     (state) => state.pokemonsPage
   );
 

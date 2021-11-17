@@ -1,10 +1,11 @@
-import { CircularProgress } from "@mui/material";
 import PropTypes from "prop-types";
 
 import MaterialCard from "../../../../commonComponents/MaterialCard";
 import CustomPagination from "../../../../commonComponents/CustomPagination";
+import CustomCircularProgress from "../../../../commonComponents/CircularProgress";
 
 import styles from "./styles.module.scss";
+import List from "../../../../commonComponents/List";
 
 const PokemonPageLayout = ({
   list,
@@ -18,21 +19,22 @@ const PokemonPageLayout = ({
       <h1 className={styles.title}>POKEMONS</h1>
       <div className={styles.cardsArea}>
         {isLoading ? (
-          <div className={styles.progressArea}>
-            <CircularProgress />
-          </div>
+          <CustomCircularProgress />
         ) : (
-          list.map(({ id, name, image, price }) => (
-            <div className={styles.card}>
-              <MaterialCard
-                key={id}
-                name={name}
-                image={image}
-                price={price}
-                handleGoToDetails={() => handleGoToDetails(id)}
-              />
-            </div>
-          ))
+          <List
+            items={list}
+            renderItems={({ id, name, image, price }) => (
+              <div className={styles.card}>
+                <MaterialCard
+                  key={id}
+                  name={name}
+                  image={image}
+                  price={price}
+                  handleGoToDetails={() => handleGoToDetails(id)}
+                />
+              </div>
+            )}
+          />
         )}
       </div>
       <div className={styles.paginationArea}>
