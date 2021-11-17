@@ -11,7 +11,7 @@ const RegistrationForm = ({
   error,
 }) => {
   return (
-    <div>
+    <>
       {isLoading ? (
         <CustomCircularProgress />
       ) : (
@@ -66,7 +66,7 @@ const RegistrationForm = ({
           </button>
         </form>
       )}
-    </div>
+    </>
   );
 };
 

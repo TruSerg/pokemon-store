@@ -3,6 +3,7 @@ import isEmail from "validator/es/lib/isEmail";
 import RegistrationForm from "../components/RegistrationForm/RegistrationFormLayout";
 
 import { useForm } from "../../../hooks";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useLayoutEffect } from "react";
 import { useHistory } from "react-router-dom";
