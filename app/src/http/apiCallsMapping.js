@@ -10,13 +10,24 @@ import * as loginPageAPI from "../pages/LoginPage/api";
 import * as signUpPageActions from "../pages/RegistrationPage/actions";
 import * as signUpPageAPI from "../pages/RegistrationPage/api";
 
+import * as cartPageActions from "../pages/CartPage/actions";
+import * as cartPageAPI from "../pages/CartPage/api";
+
 const apiCallsMapping = (action) => {
   const mapping = {
     [pokemonsPageActions.GET_POKEMONS_REQUEST]: pokemonsPageAPI.getPokemons,
+
     [pokemonDetailedActions.GET_POKEMON_DETAILS_REQUEST]:
       pokemonDetailsAPI.getPokemonDetail,
+
     [loginPageActions.LOG_IN_REQUEST]: loginPageAPI.login,
+
     [signUpPageActions.SIGN_UP_REQUEST]: signUpPageAPI.signup,
+
+    [cartPageActions.GET_CART_REQUEST]: cartPageAPI.getCart,
+    [cartPageActions.ADD_ITEM_REQUEST]: cartPageAPI.addItemToCart,
+    [cartPageActions.REMOVE_ITEM_REQUEST]: cartPageAPI.removeItemFromCart,
+    [cartPageActions.CHANGE_CART_REQUEST]: cartPageAPI.changeItem,
   };
   return mapping[action.type];
 };
