@@ -12,28 +12,40 @@ const useCart = () => {
 
   const { itemsList } = useSelector((state) => state.cartPage);
 
-  const handleAddPokemonToCart = useCallback((pokemon) => {
-    const addPokemon = { ...pokemon, quantity: 1 };
-    dispatch(ADD_ITEM_REQUEST(addPokemon));
-  }, []);
+  const handleAddPokemonToCart = useCallback(
+    (pokemon) => {
+      const addPokemon = { ...pokemon, quantity: 1 };
+      dispatch(ADD_ITEM_REQUEST(addPokemon));
+    },
+    [dispatch]
+  );
 
-  const handleDeletePokemonFromCart = useCallback((pokemon) => {
-    dispatch(REMOVE_ITEM_REQUEST(pokemon));
-  }, []);
+  const handleDeletePokemonFromCart = useCallback(
+    (pokemon) => {
+      dispatch(REMOVE_ITEM_REQUEST(pokemon));
+    },
+    [dispatch]
+  );
 
-  const handleQuantityIncrement = useCallback((pokemon) => {
-    const updatedPokemon = { id: pokemon.id, quantity: pokemon.quantity + 1 };
-  }, []);
+  const handleQuantityIncrement = useCallback(
+    (pokemon) => {
+      const updatedPokemon = { id: pokemon.id, quantity: pokemon.quantity + 1 };
+    },
+    [dispatch]
+  );
 
-  const handleQuantityDecrement = useCallback((pokemon) => {
-    if (pokemon.quantity !== 0) {
-      const updatedPokemon = {
-        id: pokemon.id,
-        quantity: pokemon.quantity - 1,
-      };
-      dispatch(CHANGE_CART_REQUEST(updatedPokemon));
-    }
-  }, []);
+  const handleQuantityDecrement = useCallback(
+    (pokemon) => {
+      if (pokemon.quantity !== 0) {
+        const updatedPokemon = {
+          id: pokemon.id,
+          quantity: pokemon.quantity - 1,
+        };
+        dispatch(CHANGE_CART_REQUEST(updatedPokemon));
+      }
+    },
+    [dispatch]
+  );
 
   return [
     itemsList,

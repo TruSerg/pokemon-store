@@ -10,6 +10,8 @@ const PokemonDetailsPageLayout = ({
   statsArray,
   info,
   isLoading,
+  handleAddPokemonToCart,
+  pokemon,
 }) => {
   return (
     <div>
@@ -24,6 +26,7 @@ const PokemonDetailsPageLayout = ({
               name={info.name}
               image={info.image}
               price={info.price}
+              handleAddPokemonToCart={handleAddPokemonToCart}
             />
             <div>
               <h2>ABILITIES</h2>

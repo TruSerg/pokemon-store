@@ -13,6 +13,7 @@ const PokemonPageLayout = ({
   currentPage,
   handleGoToDetails,
   handlePageChange,
+  handleAddPokemonToCart,
 }) => {
   return (
     <div>
@@ -23,7 +24,7 @@ const PokemonPageLayout = ({
         ) : (
           <List
             items={list}
-            renderItems={({ id, name, image, price }) => (
+            renderItems={({ id, name, image, price }, pokemon) => (
               <div className={styles.card}>
                 <MaterialCard
                   key={id}
@@ -31,6 +32,7 @@ const PokemonPageLayout = ({
                   image={image}
                   price={price}
                   handleGoToDetails={() => handleGoToDetails(id)}
+                  handleAddPokemonToCart={() => handleAddPokemonToCart(pokemon)}
                 />
               </div>
             )}

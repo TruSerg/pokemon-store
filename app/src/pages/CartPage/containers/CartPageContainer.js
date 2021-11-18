@@ -16,7 +16,6 @@ const CartPageContainer = () => {
   );
 
   const [
-    handleAddPokemonToCart,
     handleDeletePokemonFromCart,
     handleQuantityIncrement,
     handleQuantityDecrement,
@@ -32,7 +31,6 @@ const CartPageContainer = () => {
       totalPrice: totalPrice,
       customerId: userInfo._id,
     };
-    dispatch(ADD_ORDER_REQUEST(addOrder));
   }, [itemsList, totalPrice, userInfo]);
 
   return (
@@ -43,7 +41,7 @@ const CartPageContainer = () => {
       handleDeletePokemonFromCart={handleDeletePokemonFromCart}
       handleQuantityIncrement={handleQuantityIncrement}
       handleQuantityDecrement={handleQuantityDecrement}
-      handleAddorder={handleAddOrder}
+      handleAddOrder={handleAddOrder}
     />
   );
 };

@@ -7,7 +7,13 @@ import {
   Typography,
 } from "@mui/material";
 
-const MaterialCard = ({ name, handleGoToDetails, image, price }) => {
+const MaterialCard = ({
+  name,
+  handleGoToDetails,
+  image,
+  price,
+  handleAddPokemonToCart,
+}) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia component="img" height="190" image={image} alt="pokemon" />
@@ -25,7 +31,9 @@ const MaterialCard = ({ name, handleGoToDetails, image, price }) => {
         </Button>
       </CardActions>
       <CardActions>
-        <Button size="small">ADD TO CART</Button>
+        <Button onClick={handleAddPokemonToCart} size="small">
+          ADD TO CART
+        </Button>
       </CardActions>
     </Card>
   );

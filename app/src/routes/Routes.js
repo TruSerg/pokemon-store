@@ -1,9 +1,9 @@
-import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import PokemonPageContainer from "../pages/PokemonsPage/containers/PokemonPageContainer";
 import PokemonDetailsPageContainer from "../pages/PokemonDetailedPage/containers/pokemonDetailsPageContainer";
 import LoginPageContainer from "../pages/LoginPage/containers/LoginPageContainer";
+import CartPageContainer from "../pages/CartPage/containers/CartPageContainer";
 
 import { ROUTES } from "./routeNames";
 import PrivateRoute from "./PrivateRoute";
@@ -23,6 +23,7 @@ const Routes = () => {
         path={ROUTES.POKEMONS_DETAILS}
         component={PokemonDetailsPageContainer}
       />
+      <Route path={ROUTES.CART_PAGE} component={CartPageContainer} />
 
       <Redirect path="*" to={ROUTES.LOGIN} />
     </Switch>
