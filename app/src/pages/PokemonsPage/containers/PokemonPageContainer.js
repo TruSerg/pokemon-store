@@ -18,7 +18,7 @@ const PokemonPageContainer = () => {
     (state) => state.pokemonsPage
   );
 
-  const [handleAddPokemonToCart] = useCart();
+  const [handleAddPokemonToCart, itemsList] = useCart();
 
   const handleGoToDetails = useCallback(
     (id) => {

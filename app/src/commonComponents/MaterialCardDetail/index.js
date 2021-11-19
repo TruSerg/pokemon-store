@@ -34,11 +34,7 @@ const MaterialCardDetail = ({
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button
-          onClick={() => handleAddPokemonToCart(pokemon)}
-          size="small"
-          color="primary"
-        >
+        <Button onClick={handleAddPokemonToCart} size="small" color="primary">
           ADD TO CART
         </Button>
       </CardActions>

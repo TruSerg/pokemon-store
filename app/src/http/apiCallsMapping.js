@@ -13,6 +13,9 @@ import * as signUpPageAPI from "../pages/RegistrationPage/api";
 import * as cartPageActions from "../pages/CartPage/actions";
 import * as cartPageAPI from "../pages/CartPage/api";
 
+import * as userAccountPageActions from "../pages/UserAccountPage/actions";
+import * as userAccountPageAPI from "../pages/UserAccountPage/api";
+
 const apiCallsMapping = (action) => {
   const mapping = {
     [pokemonsPageActions.GET_POKEMONS_REQUEST]: pokemonsPageAPI.getPokemons,
@@ -28,6 +31,9 @@ const apiCallsMapping = (action) => {
     [cartPageActions.ADD_ITEM_REQUEST]: cartPageAPI.addItemToCart,
     [cartPageActions.REMOVE_ITEM_REQUEST]: cartPageAPI.removeItemFromCart,
     [cartPageActions.CHANGE_CART_REQUEST]: cartPageAPI.changeItem,
+
+    [userAccountPageActions.GET_ORDER_REQUEST]: userAccountPageAPI.getUserOrder,
+    [userAccountPageActions.ADD_ORDER_REQUEST]: userAccountPageAPI.addUserOrder,
   };
   return mapping[action.type];
 };

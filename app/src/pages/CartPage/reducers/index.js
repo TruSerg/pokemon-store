@@ -16,17 +16,13 @@ const cartPageReducer = handleActions(
       ...state,
       isLoading: true,
     }),
-    [actions.GET_CART_SUCCESS]: (state, { payload }) => {
-      const { totalPrice, quantity, itemsList } = payload.response;
-
-      return {
-        ...state,
-        isLoading: false,
-        totalPrice,
-        quantity,
-        itemsList,
-      };
-    },
+    [actions.GET_CART_SUCCESS]: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      totalPrice: payload.response.totalPrice,
+      quantity: payload.response.quantity,
+      itemsList: payload.response.itemsList,
+    }),
     [actions.GET_CART_FAIL]: (state, { payload }) => ({
       ...state,
       isLoading: false,
@@ -37,16 +33,13 @@ const cartPageReducer = handleActions(
       ...state,
       isLoading: true,
     }),
-    [actions.ADD_ITEM_SUCCESS]: (state, { payload }) => {
-      const { totalPrice, quantity, itemsList } = payload.response;
-      return {
-        ...state,
-        isLoading: false,
-        totalPrice,
-        quantity,
-        itemsList,
-      };
-    },
+    [actions.ADD_ITEM_SUCCESS]: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      totalPrice: payload.response.totalPrice,
+      quantity: payload.response.quantity,
+      itemsList: payload.response.itemsList,
+    }),
     [actions.ADD_ITEM_FAIL]: (state, { payload }) => ({
       ...state,
       isLoading: false,

@@ -4,6 +4,7 @@ import PokemonPageContainer from "../pages/PokemonsPage/containers/PokemonPageCo
 import PokemonDetailsPageContainer from "../pages/PokemonDetailedPage/containers/pokemonDetailsPageContainer";
 import LoginPageContainer from "../pages/LoginPage/containers/LoginPageContainer";
 import CartPageContainer from "../pages/CartPage/containers/CartPageContainer";
+import UserAccountPageContainer from "../pages/UserAccountPage/containers/UserAccountPageContainer";
 
 import { ROUTES } from "./routeNames";
 import PrivateRoute from "./PrivateRoute";
@@ -24,7 +25,7 @@ const Routes = () => {
         component={PokemonDetailsPageContainer}
       />
       <Route path={ROUTES.CART_PAGE} component={CartPageContainer} />
-
+      <Route path={ROUTES.USER_PAGE} component={UserAccountPageContainer} />
       <Redirect path="*" to={ROUTES.LOGIN} />
     </Switch>
   );

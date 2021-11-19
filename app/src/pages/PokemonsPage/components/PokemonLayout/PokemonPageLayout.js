@@ -22,21 +22,19 @@ const PokemonPageLayout = ({
         {isLoading ? (
           <CustomCircularProgress />
         ) : (
-          <List
-            items={list}
-            renderItems={({ id, name, image, price }, pokemon) => (
-              <div className={styles.card}>
+          <div>
+            {list.map((pokemon) => {
+              <div key={pokemon.id} className={styles.card}>
                 <MaterialCard
-                  key={id}
-                  name={name}
-                  image={image}
-                  price={price}
-                  handleGoToDetails={() => handleGoToDetails(id)}
+                  name={pokemon.name}
+                  image={pokemon.image}
+                  price={pokemon.price}
+                  handleGoToDetails={() => handleGoToDetails(pokemon.id)}
                   handleAddPokemonToCart={() => handleAddPokemonToCart(pokemon)}
                 />
-              </div>
-            )}
-          />
+              </div>;
+            })}
+          </div>
         )}
       </div>
       <div className={styles.paginationArea}>

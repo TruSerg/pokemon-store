@@ -1,15 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
 
-import { useCart } from "../../../hooks";
-import { GET_CART_REQUEST } from "../actions";
-
 import CartPageLayout from "../components/CartLayout/CartPageLayout";
+import { useCart } from "../../../hooks";
+
+import { GET_CART_REQUEST } from "../actions";
+import { ADD_ORDER_REQUEST } from "../../UserAccountPage/actions";
 
 const CartPageContainer = () => {
   const dispatch = useDispatch();
 
-  const { userInfo } = useSelector((state) => state.auth);
+  const { info } = useSelector((state) => state.auth);
 
   const { isLoading, itemsList, totalPrice } = useSelector(
     (state) => state.cartPage
@@ -29,9 +30,10 @@ const CartPageContainer = () => {
     const addOrder = {
       itemsList: itemsList,
       totalPrice: totalPrice,
-      customerId: userInfo._id,
+      customerId: info._id,
     };
-  }, [itemsList, totalPrice, userInfo]);
+    dispatch(ADD_ORDER_REQUEST(addOrder));
+  }, [dispatch, itemsList, totalPrice, info]);
 
   return (
     <CartPageLayout

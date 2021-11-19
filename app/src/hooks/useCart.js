@@ -30,6 +30,7 @@ const useCart = () => {
   const handleQuantityIncrement = useCallback(
     (pokemon) => {
       const updatedPokemon = { id: pokemon.id, quantity: pokemon.quantity + 1 };
+      dispatch(CHANGE_CART_REQUEST(updatedPokemon));
     },
     [dispatch]
   );

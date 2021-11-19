@@ -25,5 +25,9 @@ export const NAV_CONFIG = {
       label: "Cart",
       path: ROUTES.CART_PAGE,
     },
+    {
+      label: "User",
+      path: ROUTES.USER_PAGE,
+    },
   ],
 };
