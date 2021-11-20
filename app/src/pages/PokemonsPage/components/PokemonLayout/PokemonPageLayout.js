@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
 
+import { CircularProgress } from "@mui/material";
+
 import MaterialCard from "../../../../commonComponents/MaterialCard";
 import CustomPagination from "../../../../commonComponents/CustomPagination";
-import CustomCircularProgress from "../../../../commonComponents/CircularProgress";
 import List from "../../../../commonComponents/List";
 
 import styles from "./styles.module.scss";
@@ -20,14 +21,15 @@ const PokemonPageLayout = ({
       <h1 className={styles.title}>POKEMONS</h1>
       <div className={styles.cardsArea}>
         {isLoading ? (
-          <CustomCircularProgress />
+          <div className={styles.progressArea}>
+            <CircularProgress />
+          </div>
         ) : (
           <List
             items={list}
             renderItems={(pokemon) => (
-              <div className={styles.card}>
+              <div key={pokemon.id} className={styles.card}>
                 <MaterialCard
-                  key={pokemon.id}
                   name={pokemon.name}
                   image={pokemon.image}
                   price={pokemon.price}

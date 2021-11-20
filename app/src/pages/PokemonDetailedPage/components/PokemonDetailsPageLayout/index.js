@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
 
-import styles from "./styles.module.scss";
+import { CircularProgress } from "@mui/material";
+
 import MaterialCardDetail from "../../../../commonComponents/MaterialCardDetail";
-import CustomCircularProgress from "../../../../commonComponents/CircularProgress";
+
+import styles from "./styles.module.scss";
 
 const PokemonDetailsPageLayout = ({
   abilitiesArray,
@@ -16,17 +18,21 @@ const PokemonDetailsPageLayout = ({
       <h1 className={styles.detailTitle}>DETAILS</h1>
       <div>
         {isLoading ? (
-          <CustomCircularProgress />
+          <div className={styles.progressArea}>
+            <CircularProgress />
+          </div>
         ) : (
-          <div className={styles.cardArea}>
-            <MaterialCardDetail
-              key={info.id}
-              name={info.name}
-              image={info.image}
-              price={info.price}
-              handleAddPokemonToCart={() => handleAddPokemonToCart(info.id)}
-            />
-            <div>
+          <div>
+            <div className={styles.cardArea}>
+              <MaterialCardDetail
+                key={info.id}
+                name={info.name}
+                image={info.image}
+                price={info.price}
+                handleAddPokemonToCart={() => handleAddPokemonToCart(info.id)}
+              />
+            </div>
+            <div className={styles.wrapperInfo}>
               <h2>ABILITIES</h2>
               {abilitiesArray?.map(({ title, description }) => (
                 <div key={title}>

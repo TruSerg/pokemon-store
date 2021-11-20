@@ -17,7 +17,7 @@ const PokemonDetailsPageContainer = () => {
   const abilitiesArray = info.abilities;
   const statsArray = info.stats;
 
-  const [handleAddPokemonToCart] = useCart();
+  const { handleAddPokemonToCart, itemList } = useCart();
 
   useEffect(() => {
     dispatch(GET_POKEMON_DETAILS_REQUEST(id));
@@ -25,6 +25,7 @@ const PokemonDetailsPageContainer = () => {
 
   return (
     <PokemonDetailsPageLayout
+      itemsList={itemList}
       info={info}
       isLoading={isLoading}
       abilitiesArray={abilitiesArray}

@@ -11,7 +11,6 @@ const MaterialCard = ({
   image,
   name,
   price,
-  isItemInTheCart,
   handleGoToDetails,
   handleAddPokemonToCart,
 }) => {
@@ -26,18 +25,15 @@ const MaterialCard = ({
           PRICE: {price}
         </Typography>
       </CardContent>
-
       <CardActions>
         <Button onClick={handleGoToDetails} size="small">
           GO TO DETAILS
         </Button>
       </CardActions>
       <CardActions>
-        {!isItemInTheCart && (
-          <Button onClick={handleAddPokemonToCart} size="small">
-            ADD TO CART
-          </Button>
-        )}
+        <Button onClick={handleAddPokemonToCart} size="small">
+          ADD TO CART
+        </Button>
       </CardActions>
     </Card>
   );

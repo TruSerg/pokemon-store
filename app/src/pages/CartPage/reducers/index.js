@@ -7,7 +7,6 @@ const defaultState = {
   totalPrice: 0,
   quantity: 0,
   itemsList: [],
-  isItemInTheCart: false,
   error: null,
 };
 
@@ -17,18 +16,13 @@ const cartPageReducer = handleActions(
       ...state,
       isLoading: true,
     }),
-    [actions.GET_CART_SUCCESS]: (state, { payload }) => {
-      const { totalPrice, quantity, itemsList, customerId } = payload.response;
-
-      return {
-        ...state,
-        isLoading: false,
-        totalPrice,
-        quantity,
-        itemsList,
-        customerId,
-      };
-    },
+    [actions.GET_CART_SUCCESS]: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      totalPrice: payload.response.totalPrice,
+      quantity: payload.response.quantity,
+      itemsList: payload.response.itemsList,
+    }),
     [actions.GET_CART_FAIL]: (state, { payload }) => ({
       ...state,
       isLoading: false,
@@ -39,17 +33,13 @@ const cartPageReducer = handleActions(
       ...state,
       isLoading: true,
     }),
-    [actions.ADD_ITEM_SUCCESS]: (state, { payload }) => {
-      const { totalPrice, quantity, itemsList } = payload.response;
-
-      return {
-        ...state,
-        isLoading: false,
-        totalPrice,
-        quantity,
-        itemsList,
-      };
-    },
+    [actions.ADD_ITEM_SUCCESS]: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      totalPrice: payload.response.totalPrice,
+      quantity: payload.response.quantity,
+      itemsList: payload.response.itemsList,
+    }),
     [actions.ADD_ITEM_FAIL]: (state, { payload }) => ({
       ...state,
       isLoading: false,
@@ -90,29 +80,27 @@ const cartPageReducer = handleActions(
       isLoading: true,
     }),
     [actions.CHANGE_CART_SUCCESS]: (state, { payload }) => {
-      const { cartState, updatedItem, isItemInTheCart } = payload.response;
+      const { cartState, updatedItem } = payload.response;
 
-      const itemsListChange = [...state.itemsList];
+      const itemsListCopy = [...state.itemsList];
 
-      const changeItem = itemsListChange.findIndex(
+      const changeItem = itemsListCopy.findIndex(
         (item) => updatedItem.id === item.id
       );
 
-      itemsListChange.splice(changeItem, 1, updatedItem);
+      itemsListCopy.splice(changeItem, 1, updatedItem);
 
       return {
         ...state,
         isLoading: false,
-        itemsList: itemsListChange,
+        itemsList: itemsListCopy,
         totalPrice: cartState.totalPrice,
         quantity: cartState.quantity,
-        isItemInTheCart: true,
       };
     },
     [actions.CHANGE_CART_FAIL]: (state, { payload }) => ({
       ...state,
       isLoading: false,
-      isItemInTheCart: false,
       error: payload,
     }),
   },

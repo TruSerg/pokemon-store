@@ -1,6 +1,8 @@
 import React from "react";
 
-import CustomCircularProgress from "../../../../commonComponents/CircularProgress";
+import { CircularProgress } from "@mui/material";
+
+import styles from "./styles.module.scss";
 
 const UserAccountPageLayout = ({ isLoading, info, orderList }) => {
   return (
@@ -8,7 +10,9 @@ const UserAccountPageLayout = ({ isLoading, info, orderList }) => {
       <h1>PERSONAL ACCOUNT</h1>
       <div>
         {isLoading ? (
-          <CustomCircularProgress />
+          <div className={styles.progressArea}>
+            <CircularProgress />
+          </div>
         ) : (
           <div>
             <div>

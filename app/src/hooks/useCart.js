@@ -10,7 +10,7 @@ import {
 const useCart = () => {
   const dispatch = useDispatch();
 
-  const { itemsList, isItemInTheCart } = useSelector((state) => state.cartPage);
+  const { itemsList } = useSelector((state) => state.cartPage);
 
   const { list } = useSelector((state) => state.pokemonsPage);
 
@@ -50,15 +50,14 @@ const useCart = () => {
     [dispatch]
   );
 
-  return [
+  return {
     list,
     itemsList,
-    isItemInTheCart,
     handleAddPokemonToCart,
     handleDeletePokemonFromCart,
     handleIncrement,
     handleDecrement,
-  ];
+  };
 };
 
 export default useCart;

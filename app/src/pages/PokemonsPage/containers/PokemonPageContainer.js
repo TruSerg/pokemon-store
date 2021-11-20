@@ -18,9 +18,9 @@ const PokemonPageContainer = () => {
     (state) => state.pokemonsPage
   );
 
-  const { isItemInTheCart, quantity } = useSelector((state) => state.cartPage);
+  const { quantity } = useSelector((state) => state.cartPage);
 
-  const [handleAddPokemonToCart] = useCart();
+  const { handleAddPokemonToCart } = useCart();
 
   const handleGoToDetails = useCallback(
     (id) => {
@@ -45,7 +45,6 @@ const PokemonPageContainer = () => {
       list={list}
       isLoading={isLoading}
       quantity={quantity}
-      isItemInTheCart={isItemInTheCart}
       currentPage={currentPage}
       handleGoToDetails={handleGoToDetails}
       handlePageChange={handlePageChange}

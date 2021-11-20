@@ -1,11 +1,15 @@
 .progressArea {
   display: flex;
   align-items: center;
-  justify-content: center;
   margin: 0 auto;
 }
 
 .wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrapperOrder {
   display: flex;
   flex-wrap: wrap;
 }
