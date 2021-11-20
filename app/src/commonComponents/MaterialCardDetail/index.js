@@ -8,13 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const MaterialCardDetail = ({
-  image,
-  name,
-  price,
-  handleAddPokemonToCart,
-  pokemon,
-}) => {
+const MaterialCardDetail = ({ image, name, price, handleAddPokemonToCart }) => {
   return (
     <Card sx={{ maxWidth: 800 }}>
       <CardActionArea>

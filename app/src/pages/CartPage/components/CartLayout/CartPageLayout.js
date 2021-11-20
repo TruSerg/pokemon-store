@@ -3,17 +3,19 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 const CartPageLayout = (
   isLoading,
-  itemsList,
   totalPrice,
+  itemsList,
+  quantity,
+  handleAddPokemonToCart,
   handleDeletePokemonFromCart,
-  handleQuantityIncrement,
-  handleQuantityDecrement,
-  handleAddOrder
+  handleIncrement,
+  handleDecrement,
+  handleGoToDetails,
+  handleGoToUserPage
 ) => {
   return (
     <div>
       <h1>SHOPPING CART</h1>
-
       <div>
         <h2>TOTAL PRICE: {totalPrice}</h2>
 
@@ -21,7 +23,7 @@ const CartPageLayout = (
           <h3>CONFIRM THE ORDER</h3>
           <Button
             disabled={totalPrice === 0}
-            onClick={() => handleAddOrder()}
+            onClick={handleGoToUserPage}
             variant="contained"
             color="success"
           >
@@ -32,27 +34,27 @@ const CartPageLayout = (
           {itemsList.map((item) => (
             <div key={item.id}>
               <div>
-                <img src={item.image} alt={item.name} />
+                <img
+                  onClick={() => handleGoToDetails(item.id)}
+                  src={item.image}
+                  alt={item.name}
+                />
                 <h3>{item.name}</h3>
                 <div>
                   <ButtonGroup disableElevation variant="contained">
-                    <Button onClick={() => handleQuantityIncrement(item)}>
-                      +
-                    </Button>
+                    <Button onClick={() => handleIncrement(item)}>+</Button>
                     <div>{item.quantity}</div>
-                    <Button onClick={() => handleQuantityDecrement(item)}>
-                      -
-                    </Button>
+                    <Button onClick={() => handleDecrement(item)}>-</Button>
                   </ButtonGroup>
                 </div>
                 <div>Price: {item.price * item.quantity}</div>
                 <div>
                   <Button
-                    onClick={() => handleDeletePokemonFromCart(item)}
+                    onClick={() => handleDeletePokemonFromCart(item.id)}
                     variant="outlined"
                     startIcon={<DeleteIcon />}
                   >
-                    Delete
+                    DELETE
                   </Button>
                 </div>
               </div>

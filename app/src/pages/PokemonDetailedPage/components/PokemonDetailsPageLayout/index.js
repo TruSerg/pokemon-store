@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import styles from "./styles.module.scss";
 import MaterialCardDetail from "../../../../commonComponents/MaterialCardDetail";
 import CustomCircularProgress from "../../../../commonComponents/CircularProgress";
-import List from "../../../../commonComponents/List";
 
 const PokemonDetailsPageLayout = ({
   abilitiesArray,
@@ -11,7 +10,6 @@ const PokemonDetailsPageLayout = ({
   info,
   isLoading,
   handleAddPokemonToCart,
-  pokemon,
 }) => {
   return (
     <div>
@@ -26,7 +24,7 @@ const PokemonDetailsPageLayout = ({
               name={info.name}
               image={info.image}
               price={info.price}
-              handleAddPokemonToCart={handleAddPokemonToCart}
+              handleAddPokemonToCart={() => handleAddPokemonToCart(info.id)}
             />
             <div>
               <h2>ABILITIES</h2>

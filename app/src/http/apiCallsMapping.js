@@ -15,6 +15,7 @@ import * as cartPageAPI from "../pages/CartPage/api";
 
 import * as userAccountPageActions from "../pages/UserAccountPage/actions";
 import * as userAccountPageAPI from "../pages/UserAccountPage/api";
+import { changeQuantity } from "../pages/CartPage/api";
 
 const apiCallsMapping = (action) => {
   const mapping = {
@@ -30,7 +31,7 @@ const apiCallsMapping = (action) => {
     [cartPageActions.GET_CART_REQUEST]: cartPageAPI.getCart,
     [cartPageActions.ADD_ITEM_REQUEST]: cartPageAPI.addItemToCart,
     [cartPageActions.REMOVE_ITEM_REQUEST]: cartPageAPI.removeItemFromCart,
-    [cartPageActions.CHANGE_CART_REQUEST]: cartPageAPI.changeItem,
+    [cartPageActions.CHANGE_CART_REQUEST]: cartPageAPI.changeQuantity,
 
     [userAccountPageActions.GET_ORDER_REQUEST]: userAccountPageAPI.getUserOrder,
     [userAccountPageActions.ADD_ORDER_REQUEST]: userAccountPageAPI.addUserOrder,

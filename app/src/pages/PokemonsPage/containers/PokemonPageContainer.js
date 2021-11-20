@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { CHANGE_PAGE, GET_POKEMONS_REQUEST } from "../actions";
+import { ROUTES } from "../../../routes/routeNames";
 
 import PokemonPageLayout from "../components/PokemonLayout/PokemonPageLayout";
-import { ROUTES } from "../../../routes/routeNames";
 
 import useCart from "../../../hooks/useCart";
 
@@ -18,7 +18,9 @@ const PokemonPageContainer = () => {
     (state) => state.pokemonsPage
   );
 
-  const [handleAddPokemonToCart, itemsList] = useCart();
+  const { isItemInTheCart, quantity } = useSelector((state) => state.cartPage);
+
+  const [handleAddPokemonToCart] = useCart();
 
   const handleGoToDetails = useCallback(
     (id) => {
@@ -42,6 +44,8 @@ const PokemonPageContainer = () => {
     <PokemonPageLayout
       list={list}
       isLoading={isLoading}
+      quantity={quantity}
+      isItemInTheCart={isItemInTheCart}
       currentPage={currentPage}
       handleGoToDetails={handleGoToDetails}
       handlePageChange={handlePageChange}

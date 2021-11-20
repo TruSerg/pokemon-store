@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import MaterialCard from "../../../../commonComponents/MaterialCard";
 import CustomPagination from "../../../../commonComponents/CustomPagination";
 import CustomCircularProgress from "../../../../commonComponents/CircularProgress";
+import List from "../../../../commonComponents/List";
 
 import styles from "./styles.module.scss";
-import List from "../../../../commonComponents/List";
 
 const PokemonPageLayout = ({
   list,
@@ -22,19 +22,21 @@ const PokemonPageLayout = ({
         {isLoading ? (
           <CustomCircularProgress />
         ) : (
-          <div>
-            {list.map((pokemon) => {
-              <div key={pokemon.id} className={styles.card}>
+          <List
+            items={list}
+            renderItems={(pokemon) => (
+              <div className={styles.card}>
                 <MaterialCard
+                  key={pokemon.id}
                   name={pokemon.name}
                   image={pokemon.image}
                   price={pokemon.price}
                   handleGoToDetails={() => handleGoToDetails(pokemon.id)}
                   handleAddPokemonToCart={() => handleAddPokemonToCart(pokemon)}
                 />
-              </div>;
-            })}
-          </div>
+              </div>
+            )}
+          />
         )}
       </div>
       <div className={styles.paginationArea}>

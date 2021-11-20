@@ -10,7 +10,9 @@ import {
 const useCart = () => {
   const dispatch = useDispatch();
 
-  const { itemsList } = useSelector((state) => state.cartPage);
+  const { itemsList, isItemInTheCart } = useSelector((state) => state.cartPage);
+
+  const { list } = useSelector((state) => state.pokemonsPage);
 
   const handleAddPokemonToCart = useCallback(
     (pokemon) => {
@@ -27,7 +29,7 @@ const useCart = () => {
     [dispatch]
   );
 
-  const handleQuantityIncrement = useCallback(
+  const handleIncrement = useCallback(
     (pokemon) => {
       const updatedPokemon = { id: pokemon.id, quantity: pokemon.quantity + 1 };
       dispatch(CHANGE_CART_REQUEST(updatedPokemon));
@@ -35,9 +37,9 @@ const useCart = () => {
     [dispatch]
   );
 
-  const handleQuantityDecrement = useCallback(
+  const handleDecrement = useCallback(
     (pokemon) => {
-      if (pokemon.quantity !== 0) {
+      if (pokemon.quantity > 0) {
         const updatedPokemon = {
           id: pokemon.id,
           quantity: pokemon.quantity - 1,
@@ -49,11 +51,13 @@ const useCart = () => {
   );
 
   return [
+    list,
     itemsList,
+    isItemInTheCart,
     handleAddPokemonToCart,
     handleDeletePokemonFromCart,
-    handleQuantityIncrement,
-    handleQuantityDecrement,
+    handleIncrement,
+    handleDecrement,
   ];
 };
 

@@ -21,14 +21,7 @@ const PokemonDetailsPageContainer = () => {
 
   useEffect(() => {
     dispatch(GET_POKEMON_DETAILS_REQUEST(id));
-  }, [dispatch]);
-
-  const pokemon = {
-    id: info.id,
-    name: info.name,
-    image: info.image,
-    price: info.price,
-  };
+  }, [dispatch, id]);
 
   return (
     <PokemonDetailsPageLayout
@@ -37,7 +30,6 @@ const PokemonDetailsPageContainer = () => {
       abilitiesArray={abilitiesArray}
       statsArray={statsArray}
       handleAddPokemonToCart={handleAddPokemonToCart}
-      pokemon={pokemon}
     />
   );
 };

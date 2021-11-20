@@ -1,49 +1,52 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 import CartPageLayout from "../components/CartLayout/CartPageLayout";
 import { useCart } from "../../../hooks";
 
 import { GET_CART_REQUEST } from "../actions";
-import { ADD_ORDER_REQUEST } from "../../UserAccountPage/actions";
+import { ROUTES } from "../../../routes/routeNames";
 
 const CartPageContainer = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  const { info } = useSelector((state) => state.auth);
-
-  const { isLoading, itemsList, totalPrice } = useSelector(
+  const { isLoading, itemsList, totalPrice, quantity } = useSelector(
     (state) => state.cartPage
   );
 
   const [
+    handleAddPokemonToCart,
     handleDeletePokemonFromCart,
-    handleQuantityIncrement,
-    handleQuantityDecrement,
+    handleIncrement,
+    handleDecrement,
   ] = useCart();
 
   useEffect(() => {
     dispatch(GET_CART_REQUEST());
   }, []);
 
-  const handleAddOrder = useCallback(() => {
-    const addOrder = {
-      itemsList: itemsList,
-      totalPrice: totalPrice,
-      customerId: info._id,
-    };
-    dispatch(ADD_ORDER_REQUEST(addOrder));
-  }, [dispatch, itemsList, totalPrice, info]);
+  const handleGoToDetails = useCallback((id) => {
+    history.push(`/products/${id}`);
+  }, []);
+
+  const handleGoToUserPage = useCallback(() => {
+    history.push(ROUTES.USER_PAGE);
+  }, [history]);
 
   return (
     <CartPageLayout
       isLoading={isLoading}
-      itemsList={itemsList}
       totalPrice={totalPrice}
+      itemsList={itemsList}
+      quantity={quantity}
+      handleAddPokemonToCart={handleAddPokemonToCart}
       handleDeletePokemonFromCart={handleDeletePokemonFromCart}
-      handleQuantityIncrement={handleQuantityIncrement}
-      handleQuantityDecrement={handleQuantityDecrement}
-      handleAddOrder={handleAddOrder}
+      handleIncrement={handleIncrement}
+      handleDecrement={handleDecrement}
+      handleGoToDetails={handleGoToDetails}
+      handleGoToUserPage={handleGoToUserPage}
     />
   );
 };

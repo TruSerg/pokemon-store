@@ -8,10 +8,11 @@ import {
 } from "@mui/material";
 
 const MaterialCard = ({
-  name,
-  handleGoToDetails,
   image,
+  name,
   price,
+  isItemInTheCart,
+  handleGoToDetails,
   handleAddPokemonToCart,
 }) => {
   return (
@@ -25,15 +26,18 @@ const MaterialCard = ({
           PRICE: {price}
         </Typography>
       </CardContent>
+
       <CardActions>
         <Button onClick={handleGoToDetails} size="small">
           GO TO DETAILS
         </Button>
       </CardActions>
       <CardActions>
-        <Button onClick={handleAddPokemonToCart} size="small">
-          ADD TO CART
-        </Button>
+        {!isItemInTheCart && (
+          <Button onClick={handleAddPokemonToCart} size="small">
+            ADD TO CART
+          </Button>
+        )}
       </CardActions>
     </Card>
   );
