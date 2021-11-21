@@ -7,7 +7,6 @@ import { useCart } from "../../../hooks";
 
 import { GET_CART_REQUEST } from "../actions";
 import { ROUTES } from "../../../routes/routeNames";
-import { ADD_ORDER_REQUEST } from "../../UserAccountPage/actions";
 
 const CartPageContainer = () => {
   const dispatch = useDispatch();
@@ -19,30 +18,27 @@ const CartPageContainer = () => {
     (state) => state.cartPage
   );
 
-  const { handleDeletePokemonFromCart, handleIncrement, handleDecrement } =
-    useCart();
+  const {
+    handleDeletePokemonFromCart,
+    handleIncrement,
+    handleDecrement,
+    handleConfirmOrder,
+  } = useCart();
 
   useEffect(() => {
     dispatch(GET_CART_REQUEST());
   }, [dispatch]);
 
-  const handleGoToDetails = useCallback((id) => {
-    history.push(`/products/${id}`);
-  }, []);
+  const handleGoToDetails = useCallback(
+    (id) => {
+      history.push(`${ROUTES.POKEMONS_PAGE}/${id}`);
+    },
+    [history]
+  );
 
   const handleGoToUserPage = useCallback(() => {
     history.push(ROUTES.USER_PAGE);
   }, [history]);
-
-  const handleAddOrder = useCallback(() => {
-    const addOrder = {
-      itemsList: itemsList,
-      totalPrice: totalPrice,
-      customerId: info._id,
-    };
-
-    dispatch(ADD_ORDER_REQUEST(addOrder));
-  }, [dispatch, itemsList, totalPrice, info]);
 
   return (
     <CartPageLayout
@@ -53,8 +49,8 @@ const CartPageContainer = () => {
       handleIncrement={handleIncrement}
       handleDecrement={handleDecrement}
       handleGoToDetails={handleGoToDetails}
+      handleConfirmOrder={handleConfirmOrder}
       handleGoToUserPage={handleGoToUserPage}
-      handleAddOrder={handleAddOrder}
     />
   );
 };

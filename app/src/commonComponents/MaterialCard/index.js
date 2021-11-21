@@ -11,18 +11,20 @@ const MaterialCard = ({
   image,
   name,
   price,
+  itemInCart,
   handleGoToDetails,
   handleAddPokemonToCart,
+  handleDeletePokemonFromCart,
 }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia component="img" height="190" image={image} alt="pokemon" />
+      <CardMedia component="img" height="190" image={image} alt={name} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          PRICE: {price}
+          Price: {price} coins
         </Typography>
       </CardContent>
       <CardActions>

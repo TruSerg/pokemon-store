@@ -6,11 +6,14 @@ import {
   CHANGE_CART_REQUEST,
   REMOVE_ITEM_REQUEST,
 } from "../pages/CartPage/actions";
+import { ADD_ORDER_REQUEST } from "../pages/UserAccountPage/actions";
 
 const useCart = () => {
   const dispatch = useDispatch();
 
-  const { itemsList } = useSelector((state) => state.cartPage);
+  const { info } = useSelector((state) => state.auth);
+
+  const { itemsList, totalPrice } = useSelector((state) => state.cartPage);
 
   const { list } = useSelector((state) => state.pokemonsPage);
 
@@ -50,6 +53,16 @@ const useCart = () => {
     [dispatch]
   );
 
+  const handleConfirmOrder = useCallback(() => {
+    const addOrder = {
+      itemsList: itemsList,
+      totalPrice: totalPrice,
+      customerId: info._id,
+    };
+
+    dispatch(ADD_ORDER_REQUEST(addOrder));
+  }, [dispatch, itemsList, totalPrice, info]);
+
   return {
     list,
     itemsList,
@@ -57,6 +70,7 @@ const useCart = () => {
     handleDeletePokemonFromCart,
     handleIncrement,
     handleDecrement,
+    handleConfirmOrder,
   };
 };
 

@@ -10,11 +10,13 @@ import styles from "./styles.module.scss";
 
 const PokemonPageLayout = ({
   list,
+  itemInCart,
   isLoading,
   currentPage,
   handleGoToDetails,
   handlePageChange,
   handleAddPokemonToCart,
+  handleDeletePokemonFromCart,
 }) => {
   return (
     <div>
@@ -31,10 +33,14 @@ const PokemonPageLayout = ({
               <div key={pokemon.id} className={styles.card}>
                 <MaterialCard
                   name={pokemon.name}
+                  itemInCart={itemInCart}
                   image={pokemon.image}
                   price={pokemon.price}
                   handleGoToDetails={() => handleGoToDetails(pokemon.id)}
                   handleAddPokemonToCart={() => handleAddPokemonToCart(pokemon)}
+                  handleDeletePokemonFromCart={() =>
+                    handleDeletePokemonFromCart(pokemon.id)
+                  }
                 />
               </div>
             )}

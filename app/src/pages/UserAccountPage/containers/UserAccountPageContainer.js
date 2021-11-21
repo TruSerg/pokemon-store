@@ -1,17 +1,29 @@
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { GET_ORDER_REQUEST } from "../actions";
 import UserAccountPageLayout from "../components/UserAccountLayout/UserAccountPageLayout";
 
 const UserAccountPageContainer = () => {
+  const dispatch = useDispatch();
+
   const { isLoading } = useSelector((state) => state.userAccountPage);
   const { info } = useSelector((state) => state.auth);
-  const { orderList } = useSelector((state) => state.userAccountPage);
+  const { itemsList, totalPrice, ordersList } = useSelector(
+    (state) => state.userAccountPage
+  );
+
+  useEffect(() => {
+    dispatch(GET_ORDER_REQUEST());
+  }, [dispatch]);
 
   return (
     <UserAccountPageLayout
       isLoading={isLoading}
       info={info}
-      orderList={orderList}
+      itemsList={itemsList}
+      totalPrice={totalPrice}
+      ordersList={ordersList}
     />
   );
 };

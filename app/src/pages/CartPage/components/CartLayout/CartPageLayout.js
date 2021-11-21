@@ -1,54 +1,73 @@
-import List from "../../../../commonComponents/List";
-
-import MaterialCardOrder from "../../../../commonComponents/MaterialCardOrder";
-import { CircularProgress } from "@mui/material";
+import React from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button,
+} from "@mui/material";
 
 import styles from "./styles.module.scss";
 
 const CartPageLayout = ({
-  isLoading,
-  totalPrice,
   itemsList,
-  quantity,
-  handleDeletePokemonFromCart,
+  totalPrice,
+  handleGoToDetails,
   handleIncrement,
   handleDecrement,
-  handleGoToDetails,
+  handleDeletePokemonFromCart,
+  handleConfirmOrder,
   handleGoToUserPage,
-  handleAddOrder,
 }) => {
   return (
     <div>
-      <h1>SHOPPING CART</h1>
-      <h2>TOTAL PRICE: {totalPrice}</h2>
-      <h3>CONFIRM THE ORDER</h3>
-      <div className={styles.wrapper}>
-        {isLoading ? (
-          <div className={styles.progressArea}>
-            <CircularProgress />
-          </div>
-        ) : (
-          <List
-            items={itemsList}
-            renderItems={(pokemon) => (
-              <div className={styles.wrapperOrder}>
-                <MaterialCardOrder
-                  key={pokemon.id}
-                  image={pokemon.image}
-                  name={pokemon.name}
-                  quantity={pokemon.quantity}
-                  totalPrice={pokemon.price * pokemon.quantity}
-                  handleIncrement={() => handleIncrement(pokemon)}
-                  handleGoToDetails={() => handleGoToDetails(pokemon.id)}
-                  handleDecrement={() => handleDecrement(pokemon)}
-                  handleDeletePokemonFromCart={() =>
-                    handleDeletePokemonFromCart(pokemon.id)
-                  }
-                />
-              </div>
-            )}
-          />
-        )}
+      <div className={styles.orderWrapper}>
+        <h1>SHOPPING CART</h1>
+
+        <TableContainer className={styles.orderContainer} component={Paper}>
+          <Table aria-label="spanning table">
+            <TableBody>
+              {itemsList.map((item) => (
+                <TableRow key={item.id}>
+                  <TableCell align="left">
+                    <img
+                      src={item.image}
+                      onClick={() => handleGoToDetails(item.id)}
+                    />
+                    {item.name}
+                  </TableCell>
+                  <TableCell align="center">
+                    <button onClick={() => handleIncrement(item)}>+</button>
+                    <span> {item.quantity} </span>
+                    <button onClick={() => handleDecrement(item)}>-</button>
+                    <div>
+                      <button
+                        onClick={() => handleDeletePokemonFromCart(item.id)}
+                      >
+                        DELETE
+                      </button>
+                    </div>
+                  </TableCell>
+                  <TableCell align="right">
+                    {item.quantity * item.price} coins
+                  </TableCell>
+                </TableRow>
+              ))}
+              <TableRow>
+                <TableCell align="center">Total</TableCell>
+                <TableCell align="right">{totalPrice} coins</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+        <h3>CONFIRM THE ORDER</h3>
+        <Button variant="contained" onClick={handleConfirmOrder}>
+          CONFIRM
+        </Button>
       </div>
     </div>
   );

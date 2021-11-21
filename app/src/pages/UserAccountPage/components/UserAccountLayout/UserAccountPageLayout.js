@@ -1,46 +1,73 @@
-import React from "react";
+import {
+  Card,
+  CardContent,
+  Typography,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  Table,
+  Paper,
+} from "@material-ui/core";
 
-import { CircularProgress } from "@mui/material";
-
-import styles from "./styles.module.scss";
-
-const UserAccountPageLayout = ({ isLoading, info, orderList }) => {
+const UserAccountPageLayout = ({ isLoading, info, classes, ordersList }) => {
   return (
     <div>
       <h1>PERSONAL ACCOUNT</h1>
       <div>
-        {isLoading ? (
-          <div className={styles.progressArea}>
-            <CircularProgress />
-          </div>
-        ) : (
-          <div>
-            <div>
-              <h2>PERSONAL DATA</h2>
-              <ul>
-                <li>{info.firstName}</li>
-                <li>{info.lastName}</li>
-                <li>Email: {info.email}</li>
-                <li>Phone: {info.phone}</li>
-                <li>Gender: {info.gender}</li>
-              </ul>
-            </div>
-            {orderList?.map((order) => (
-              <div key={order._id}>
-                <h3>TOTAL PRICE: {order.totalPrice}</h3>
-                {order.itemsList?.map((item) => (
-                  <div key={item.id}>
-                    <h3>{item.name}</h3>
-                    <img src={item.image} alt="" />
-                    <p>{item.price}</p>
-                    <p>{item.quantity}</p>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        )}
+        <Card>
+          <CardContent>
+            <Typography color="textSecondary" gutterBottom>
+              Personal data
+            </Typography>
+            <Typography variant="h5" component="h2">
+              {`${info.firstName} ${info.lastName}`}
+            </Typography>
+            <Typography color="textSecondary">
+              {`Email: ${info.email}`}
+            </Typography>
+            <Typography variant="body2" component="p">
+              {`Telephone: ${info.phone}`}
+              <br />
+              {`Gender: ${info.gender}`}
+            </Typography>
+          </CardContent>
+        </Card>
       </div>
+      {ordersList?.map((order) => (
+        <div key={order._id}>
+          <TableContainer component={Paper}>
+            <Table size="small" aria-label="a dense table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Pokemon name</TableCell>
+                  <TableCell align="right">Image</TableCell>
+                  <TableCell align="right">Price</TableCell>
+                  <TableCell align="right">Quantity</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {order.itemsList?.map((item) => (
+                  <TableRow key={item.id}>
+                    <TableCell component="th" scope="row">
+                      {item.name}
+                    </TableCell>
+                    <TableCell align="right">
+                      <img src={item.image} />
+                    </TableCell>
+                    <TableCell align="right">{item.price}</TableCell>
+                    <TableCell align="right">{item.quantity}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <div>
+            <h3>TOTAL PRICE: {order.totalPrice}</h3>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

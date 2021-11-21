@@ -1,15 +1,12 @@
-.progressArea {
+.orderWrapper {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   margin: 0 auto;
+  align-items: center;
+  padding-bottom: 20px;
 }
 
-.wrapper {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.wrapperOrder {
-  display: flex;
-  flex-wrap: wrap;
+.orderContainer {
+  max-width: 50vw;
+  margin: 20px 0;
 }

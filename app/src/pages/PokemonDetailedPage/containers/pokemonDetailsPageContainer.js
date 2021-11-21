@@ -14,10 +14,17 @@ const PokemonDetailsPageContainer = () => {
 
   const { info, isLoading } = useSelector((state) => state.pokemonDetails);
 
-  const abilitiesArray = info.abilities;
-  const statsArray = info.stats;
+  const abilities = info.abilities;
+  const stats = info.stats;
 
   const { handleAddPokemonToCart, itemList } = useCart();
+
+  const addPokemonToCart = {
+    id: info.id,
+    name: info.name,
+    image: info.image,
+    price: info.price,
+  };
 
   useEffect(() => {
     dispatch(GET_POKEMON_DETAILS_REQUEST(id));
@@ -28,9 +35,10 @@ const PokemonDetailsPageContainer = () => {
       itemsList={itemList}
       info={info}
       isLoading={isLoading}
-      abilitiesArray={abilitiesArray}
-      statsArray={statsArray}
+      abilities={abilities}
+      stats={stats}
       handleAddPokemonToCart={handleAddPokemonToCart}
+      addPokemonToCart={addPokemonToCart}
     />
   );
 };

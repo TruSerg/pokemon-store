@@ -10,15 +10,15 @@ import {
 
 const MaterialCardDetail = ({ image, name, price, handleAddPokemonToCart }) => {
   return (
-    <Card sx={{ maxWidth: 400 }}>
+    <Card sx={{ maxWidth: 300 }}>
       <CardActionArea>
-        <CardMedia component="img" height="400" image={image} alt={name} />
+        <CardMedia component="img" height="300" image={image} alt={name} />
         <CardContent>
           <Typography gutterBottom variant="h4" component="div">
             {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            PRICE: {price}
+            Price: {price} coins
           </Typography>
         </CardContent>
       </CardActionArea>

@@ -15,7 +15,7 @@ import * as cartPageAPI from "../pages/CartPage/api";
 
 import * as userAccountPageActions from "../pages/UserAccountPage/actions";
 import * as userAccountPageAPI from "../pages/UserAccountPage/api";
-import { changeQuantity } from "../pages/CartPage/api";
+import { addUserOrder } from "../pages/UserAccountPage/api";
 
 const apiCallsMapping = (action) => {
   const mapping = {

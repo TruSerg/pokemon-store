@@ -7,11 +7,12 @@ import MaterialCardDetail from "../../../../commonComponents/MaterialCardDetail"
 import styles from "./styles.module.scss";
 
 const PokemonDetailsPageLayout = ({
-  abilitiesArray,
-  statsArray,
+  abilities,
+  stats,
   info,
   isLoading,
   handleAddPokemonToCart,
+  addPokemonToCart,
 }) => {
   return (
     <div>
@@ -29,19 +30,21 @@ const PokemonDetailsPageLayout = ({
                 name={info.name}
                 image={info.image}
                 price={info.price}
-                handleAddPokemonToCart={() => handleAddPokemonToCart(info.id)}
+                handleAddPokemonToCart={() =>
+                  handleAddPokemonToCart(addPokemonToCart)
+                }
               />
             </div>
             <div className={styles.wrapperInfo}>
               <h2>ABILITIES</h2>
-              {abilitiesArray?.map(({ title, description }) => (
+              {abilities?.map(({ title, description }) => (
                 <div key={title}>
                   <h3>{title}</h3>
                   <p>{description}</p>
                 </div>
               ))}
               <h2>STATS</h2>
-              {statsArray?.map(({ title, value }) => (
+              {stats?.map(({ title, value }) => (
                 <div key={title}>
                   <p>
                     {title} : {value}
