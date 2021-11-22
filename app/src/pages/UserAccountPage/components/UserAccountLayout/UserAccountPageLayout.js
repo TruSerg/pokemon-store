@@ -1,5 +1,4 @@
 import {
-  Card,
   CardContent,
   Typography,
   TableContainer,
@@ -11,29 +10,30 @@ import {
   Paper,
 } from "@material-ui/core";
 
-const UserAccountPageLayout = ({ isLoading, info, classes, ordersList }) => {
+import styles from "./styles.module.scss";
+
+const UserAccountPageLayout = ({ info, ordersList }) => {
   return (
     <div>
-      <h1>PERSONAL ACCOUNT</h1>
+      <h1 className={styles.accountTitle}>PERSONAL ACCOUNT</h1>
       <div>
-        <Card>
+        <div>
           <CardContent>
-            <Typography color="textSecondary" gutterBottom>
-              Personal data
-            </Typography>
-            <Typography variant="h5" component="h2">
+            <h2>PERSONAL DATA</h2>
+            <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
               {`${info.firstName} ${info.lastName}`}
             </Typography>
-            <Typography color="textSecondary">
+            <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
               {`Email: ${info.email}`}
             </Typography>
-            <Typography variant="body2" component="p">
-              {`Telephone: ${info.phone}`}
-              <br />
+            <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+              {`Phone: ${info.phone}`}
+            </Typography>
+            <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
               {`Gender: ${info.gender}`}
             </Typography>
           </CardContent>
-        </Card>
+        </div>
       </div>
       {ordersList?.map((order) => (
         <div key={order._id}>
@@ -41,10 +41,10 @@ const UserAccountPageLayout = ({ isLoading, info, classes, ordersList }) => {
             <Table size="small" aria-label="a dense table">
               <TableHead>
                 <TableRow>
-                  <TableCell>Pokemon name</TableCell>
-                  <TableCell align="right">Image</TableCell>
-                  <TableCell align="right">Price</TableCell>
-                  <TableCell align="right">Quantity</TableCell>
+                  <TableCell>NAME</TableCell>
+                  <TableCell align="left">IMAGE</TableCell>
+                  <TableCell align="left">QUANTITY</TableCell>
+                  <TableCell align="left">PRICE</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -53,18 +53,20 @@ const UserAccountPageLayout = ({ isLoading, info, classes, ordersList }) => {
                     <TableCell component="th" scope="row">
                       {item.name}
                     </TableCell>
-                    <TableCell align="right">
+                    <TableCell align="left">
                       <img src={item.image} />
                     </TableCell>
-                    <TableCell align="right">{item.price}</TableCell>
-                    <TableCell align="right">{item.quantity}</TableCell>
+                    <TableCell align="left">{item.quantity}</TableCell>
+                    <TableCell align="left">{item.price}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
           </TableContainer>
           <div>
-            <h3>TOTAL PRICE: {order.totalPrice}</h3>
+            <h3 className={styles.accountTitle}>
+              TOTAL PRICE: {order.totalPrice}
+            </h3>
           </div>
         </div>
       ))}

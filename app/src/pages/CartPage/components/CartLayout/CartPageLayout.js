@@ -1,14 +1,6 @@
-import React from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Button,
-} from "@mui/material";
+import { Button } from "@mui/material";
+
+import List from "../../../../commonComponents/List";
 
 import styles from "./styles.module.scss";
 
@@ -23,51 +15,66 @@ const CartPageLayout = ({
   handleGoToUserPage,
 }) => {
   return (
-    <div>
+    <div className={styles.orderArea}>
+      <h1 className={styles.orderTitle}>SHOPPING CART</h1>
       <div className={styles.orderWrapper}>
-        <h1>SHOPPING CART</h1>
-
-        <TableContainer className={styles.orderContainer} component={Paper}>
-          <Table aria-label="spanning table">
-            <TableBody>
-              {itemsList.map((item) => (
-                <TableRow key={item.id}>
-                  <TableCell align="left">
-                    <img
-                      src={item.image}
-                      onClick={() => handleGoToDetails(item.id)}
-                    />
-                    {item.name}
-                  </TableCell>
-                  <TableCell align="center">
-                    <button onClick={() => handleIncrement(item)}>+</button>
-                    <span> {item.quantity} </span>
-                    <button onClick={() => handleDecrement(item)}>-</button>
-                    <div>
-                      <button
-                        onClick={() => handleDeletePokemonFromCart(item.id)}
-                      >
-                        DELETE
-                      </button>
-                    </div>
-                  </TableCell>
-                  <TableCell align="right">
-                    {item.quantity * item.price} coins
-                  </TableCell>
-                </TableRow>
-              ))}
-              <TableRow>
-                <TableCell align="center">Total</TableCell>
-                <TableCell align="right">{totalPrice} coins</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
-
+        <div className={styles.cardsArea}>
+          <List
+            items={itemsList}
+            renderItems={(item) => (
+              <div className={styles.cardsOrder} key={item.id}>
+                <div>
+                  <img
+                    className={styles.cardImage}
+                    src={item.image}
+                    onClick={() => handleGoToDetails(item.id)}
+                  />
+                  <p className={styles.pokeName}>{item.name}</p>
+                </div>
+                <div>
+                  <button
+                    className={styles.cardBtn}
+                    onClick={() => handleIncrement(item)}
+                  >
+                    +
+                  </button>
+                  <span className={styles.cardDisplay}> {item.quantity} </span>
+                  <button
+                    className={styles.cardBtn}
+                    onClick={() => handleDecrement(item)}
+                  >
+                    -
+                  </button>
+                  <div>
+                    <Button
+                      variant="outlined"
+                      size="small"
+                      className={styles.cardButton}
+                      onClick={() => handleDeletePokemonFromCart(item.id)}
+                    >
+                      DELETE
+                    </Button>
+                  </div>
+                </div>
+                <div>{item.quantity * item.price} coins</div>
+              </div>
+            )}
+          />
+        </div>
+      </div>
+      <div className={styles.confirmArea}>
         <h3>CONFIRM THE ORDER</h3>
-        <Button variant="contained" onClick={handleConfirmOrder}>
-          CONFIRM
-        </Button>
+        <div>
+          <span className={styles.confirmItem}>TOTAL PRICE:</span>
+          <span className={styles.confirmItem}>{totalPrice} coins</span>
+          <Button
+            onClick={handleConfirmOrder}
+            variant="contained"
+            color="success"
+          >
+            CONFIRM
+          </Button>
+        </div>
       </div>
     </div>
   );
