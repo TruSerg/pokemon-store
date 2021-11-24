@@ -5,7 +5,7 @@ import RegistrationForm from "../components/RegistrationForm/RegistrationFormLay
 import { useForm } from "../../../hooks";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useCallback, useLayoutEffect } from "react";
+import { useCallback, useLayoutEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { SIGN_UP_REQUEST } from "../actions";
@@ -17,6 +17,16 @@ const RegistrationPageContainer = () => {
   const history = useHistory();
 
   const { isLoading, isAuth, error } = useSelector((state) => state.signup);
+
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = useCallback(() => {
+    setOpen(true);
+  }, []);
+
+  const handleClose = useCallback((event, reason) => {
+    setOpen(false);
+  }, []);
 
   const [formData, handleChange] = useForm({
     email: "",
@@ -59,19 +69,29 @@ const RegistrationPageContainer = () => {
   );
 
   useLayoutEffect(() => {
+    handleOpen();
     if (isAuth) {
       history.push(ROUTES.LOGIN);
     }
   }, [isAuth]);
 
+  const handleGoToLoginPage = useCallback(() => {
+    handleClose();
+    history.push(ROUTES.LOGIN);
+  }, [history]);
+
   return (
     <RegistrationForm
       isLoading={isLoading}
       formData={formData}
+      open={open}
+      handleOpen={handleOpen}
+      handleClose={handleClose}
       onChange={handleChange}
       onSubmit={handleSubmit}
       isFormValid={isFormValid}
       error={error}
+      handleGoToLoginPage={handleGoToLoginPage}
     />
   );
 };

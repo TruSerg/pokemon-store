@@ -30,6 +30,8 @@ const PokemonDetailsPageContainer = () => {
     dispatch(GET_POKEMON_DETAILS_REQUEST(id));
   }, [dispatch, id]);
 
+  console.log(isLoading);
+
   return (
     <PokemonDetailsPageLayout
       itemsList={itemList}

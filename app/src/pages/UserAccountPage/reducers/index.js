@@ -37,9 +37,9 @@ const userPageReducer = handleActions(
       return {
         ...state,
         isLoading: false,
-        itemsList: payload.response.itemsList,
-        totalPrice: payload.response.totalPrice,
-        customerId: payload.response.customerId,
+        itemsList: payload.response,
+        totalPrice: payload.response,
+        customerId: payload.response,
       };
     },
     [actions.ADD_ORDER_FAIL]: (state, { payload }) => ({

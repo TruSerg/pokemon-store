@@ -82,7 +82,7 @@ const cartPageReducer = handleActions(
       isLoading: true,
     }),
     [actions.CHANGE_CART_SUCCESS]: (state, { payload }) => {
-      const { cartState, updatedItem, itemInCart } = payload.response;
+      const { cartState, updatedItem } = payload.response;
 
       const itemsListChange = [...state.itemsList];
 

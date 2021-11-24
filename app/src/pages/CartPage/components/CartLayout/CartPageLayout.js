@@ -1,8 +1,12 @@
-import { Button } from "@mui/material";
+import { Button, Box, Alert } from "@mui/material";
+import { Snackbar } from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
 
 import List from "../../../../commonComponents/List";
 
 import styles from "./styles.module.scss";
+
+import * as React from "react";
 
 const CartPageLayout = ({
   itemsList,
@@ -12,7 +16,9 @@ const CartPageLayout = ({
   handleDecrement,
   handleDeletePokemonFromCart,
   handleConfirmOrder,
-  handleGoToUserPage,
+  handleOpen,
+  handleClose,
+  open,
 }) => {
   return (
     <div className={styles.orderArea}>
@@ -31,7 +37,7 @@ const CartPageLayout = ({
                   />
                   <p className={styles.pokeName}>{item.name}</p>
                 </div>
-                <div>
+                <div className={styles.buttons}>
                   <button
                     className={styles.cardBtn}
                     onClick={() => handleIncrement(item)}
@@ -68,6 +74,7 @@ const CartPageLayout = ({
           <span className={styles.confirmItem}>TOTAL PRICE:</span>
           <span className={styles.confirmItem}>{totalPrice} coins</span>
           <Button
+            disabled={totalPrice === 0}
             onClick={handleConfirmOrder}
             variant="contained"
             color="success"
@@ -75,6 +82,13 @@ const CartPageLayout = ({
             CONFIRM
           </Button>
         </div>
+      </div>
+      <div className={styles.snackBar}>
+        <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+          <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
+            Your order has been successfully placed
+          </Alert>
+        </Snackbar>
       </div>
     </div>
   );

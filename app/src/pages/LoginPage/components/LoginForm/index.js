@@ -1,4 +1,4 @@
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Input } from "@mui/material";
 
 import styles from "./styles.module.scss";
 
@@ -13,25 +13,46 @@ const LoginForm = ({
 }) => {
   return (
     <div className={styles.wrapper}>
-      <form onSubmit={onSubmit}>
-        <input
-          type="email"
-          value={formData.email}
-          name="email"
-          onChange={onChange}
-        />
-        <input
-          type="password"
-          value={formData.password}
-          name="password"
-          onChange={onChange}
-        />
-        {error && <div>{error}</div>}
-        <button disabled={!isFormValid} role="submit">
-          LOGIN
-        </button>
-        <button onClick={handleGoToSignup}>SIGNUP</button>
-      </form>
+      <div className={styles.formArea}>
+        <div className={styles.form}>
+          <form onSubmit={onSubmit}>
+            <div>
+              <Input
+                type="email"
+                value={formData.email}
+                name="email"
+                onChange={onChange}
+                placeholder="Email"
+              />
+            </div>
+            <div className={styles.input}>
+              <Input
+                type="password"
+                value={formData.password}
+                name="password"
+                onChange={onChange}
+                placeholder="Password"
+              />
+            </div>
+
+            <div className={styles.button}>
+              <button
+                className={styles.btn}
+                disabled={!isFormValid}
+                role="submit"
+              >
+                LOGIN
+              </button>
+            </div>
+            <div className={styles.button}>
+              <button className={styles.btn} onClick={handleGoToSignup}>
+                SIGNUP
+              </button>
+            </div>
+            {error && <div>{error}</div>}
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

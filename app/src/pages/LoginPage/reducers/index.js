@@ -7,6 +7,7 @@ const defaultState = {
   isLoading: false,
   info: {},
   isAuth: false,
+  accessToken: null,
   error: null,
 };
 

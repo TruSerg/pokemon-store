@@ -8,7 +8,12 @@ import {
   TableBody,
   Table,
   Paper,
-} from "@material-ui/core";
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@mui/material";
+
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import styles from "./styles.module.scss";
 
@@ -37,36 +42,48 @@ const UserAccountPageLayout = ({ info, ordersList }) => {
       </div>
       {ordersList?.map((order) => (
         <div key={order._id}>
-          <TableContainer component={Paper}>
-            <Table size="small" aria-label="a dense table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>NAME</TableCell>
-                  <TableCell align="left">IMAGE</TableCell>
-                  <TableCell align="left">QUANTITY</TableCell>
-                  <TableCell align="left">PRICE</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {order.itemsList?.map((item) => (
-                  <TableRow key={item.id}>
-                    <TableCell component="th" scope="row">
-                      {item.name}
-                    </TableCell>
-                    <TableCell align="left">
-                      <img src={item.image} />
-                    </TableCell>
-                    <TableCell align="left">{item.quantity}</TableCell>
-                    <TableCell align="left">{item.price}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <div>
-            <h3 className={styles.accountTitle}>
-              TOTAL PRICE: {order.totalPrice}
-            </h3>
+          <div className={styles.accordion}>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography>
+                  <strong>TOTAL PRICE: {order.totalPrice}</strong>
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>
+                  <TableContainer component={Paper}>
+                    <Table size="small" aria-label="a dense table">
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>NAME</TableCell>
+                          <TableCell align="left">IMAGE</TableCell>
+                          <TableCell align="left">QUANTITY</TableCell>
+                          <TableCell align="left">PRICE</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {order.itemsList?.map((item) => (
+                          <TableRow key={item.id}>
+                            <TableCell component="th" scope="row">
+                              {item.name}
+                            </TableCell>
+                            <TableCell align="left">
+                              <img src={item.image} />
+                            </TableCell>
+                            <TableCell align="left">{item.quantity}</TableCell>
+                            <TableCell align="left">{item.price}</TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
           </div>
         </div>
       ))}

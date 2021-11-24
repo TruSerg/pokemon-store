@@ -18,10 +18,9 @@ const PokemonPageContainer = () => {
     (state) => state.pokemonsPage
   );
 
-  const { itemInCart, quantity } = useSelector((state) => state.cartPage);
+  const { quantity } = useSelector((state) => state.cartPage);
 
-  const { handleAddPokemonToCart, handleDeletePokemonFromCart, itemsList } =
-    useCart();
+  const { handleAddPokemonToCart, handleDeletePokemonFromCart } = useCart();
 
   const handleGoToDetails = useCallback(
     (id) => {
@@ -32,19 +31,20 @@ const PokemonPageContainer = () => {
 
   const handlePageChange = useCallback(
     (page) => {
-      dispatch(CHANGE_PAGE(page));
+      if (page !== currentPage) {
+        dispatch(CHANGE_PAGE(page));
+      }
     },
-    [dispatch]
+    [dispatch, currentPage]
   );
 
   useEffect(() => {
     dispatch(GET_POKEMONS_REQUEST(currentPage));
-  }, [currentPage]);
+  }, [dispatch, currentPage]);
 
   return (
     <PokemonPageLayout
       list={list}
-      itemInCart={itemInCart}
       isLoading={isLoading}
       quantity={quantity}
       currentPage={currentPage}

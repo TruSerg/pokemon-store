@@ -7,6 +7,8 @@ import {
   Typography,
 } from "@mui/material";
 
+import styles from "./styles.module.scss";
+
 const MaterialCard = ({
   image,
   name,
@@ -28,12 +30,22 @@ const MaterialCard = ({
         </Typography>
       </CardContent>
       <CardActions>
-        <Button onClick={handleGoToDetails} size="small">
+        <Button
+          variant="primery"
+          color="success"
+          onClick={handleGoToDetails}
+          size="small"
+        >
           GO TO DETAILS
         </Button>
       </CardActions>
       <CardActions>
-        <Button onClick={handleAddPokemonToCart} size="small">
+        <Button
+          variant="primery"
+          color="success"
+          onClick={handleAddPokemonToCart}
+          size="small"
+        >
           ADD TO CART
         </Button>
       </CardActions>
