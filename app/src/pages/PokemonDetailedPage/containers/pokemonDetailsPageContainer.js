@@ -1,23 +1,28 @@
 import PokemonDetailsPageLayout from "../components/PokemonDetailsPageLayout";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { useCallback, useEffect } from "react";
 
 import useCart from "../../../hooks/useCart";
 
 import { GET_POKEMON_DETAILS_REQUEST } from "../actions";
+import { ROUTES } from "../../../routes/routeNames";
 
 const PokemonDetailsPageContainer = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const { id } = useParams();
 
   const { info, isLoading } = useSelector((state) => state.pokemonDetails);
 
+  const { itemsList } = useSelector((state) => state.cartPage);
+
   const abilities = info.abilities;
   const stats = info.stats;
 
-  const { handleAddPokemonToCart, itemList } = useCart();
+  const { handleAddPokemonToCart, itemList, handleGoToCartPage } = useCart();
 
   const addPokemonToCart = {
     id: info.id,
@@ -26,11 +31,12 @@ const PokemonDetailsPageContainer = () => {
     price: info.price,
   };
 
+  const isAddPokemonToCart =
+    itemsList.findIndex((item) => item.id === info.id) !== -1;
+
   useEffect(() => {
     dispatch(GET_POKEMON_DETAILS_REQUEST(id));
   }, [dispatch, id]);
-
-  console.log(isLoading);
 
   return (
     <PokemonDetailsPageLayout
@@ -41,6 +47,8 @@ const PokemonDetailsPageContainer = () => {
       stats={stats}
       handleAddPokemonToCart={handleAddPokemonToCart}
       addPokemonToCart={addPokemonToCart}
+      isAddPokemonToCart={isAddPokemonToCart}
+      handleGoToCartPage={handleGoToCartPage}
     />
   );
 };

@@ -13,6 +13,8 @@ const PokemonDetailsPageLayout = ({
   isLoading,
   handleAddPokemonToCart,
   addPokemonToCart,
+  isAddPokemonToCart,
+  handleGoToCartPage,
 }) => {
   return (
     <div>
@@ -33,6 +35,8 @@ const PokemonDetailsPageLayout = ({
                 handleAddPokemonToCart={() =>
                   handleAddPokemonToCart(addPokemonToCart)
                 }
+                isAddPokemonToCart={isAddPokemonToCart}
+                handleGoToCartPage={handleGoToCartPage}
               />
             </div>
             <div className={styles.wrapperInfo}>

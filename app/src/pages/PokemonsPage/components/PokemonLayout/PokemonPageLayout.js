@@ -9,14 +9,15 @@ import List from "../../../../commonComponents/List";
 import styles from "./styles.module.scss";
 
 const PokemonPageLayout = ({
-  list,
-  itemInCart,
+  pokemonList,
+  cartItems,
   isLoading,
   currentPage,
   handleGoToDetails,
   handlePageChange,
   handleAddPokemonToCart,
   handleDeletePokemonFromCart,
+  handleGoToCartPage,
 }) => {
   return (
     <div>
@@ -28,22 +29,29 @@ const PokemonPageLayout = ({
           </div>
         ) : (
           <List
-            items={list}
-            renderItems={(pokemon) => (
-              <div key={pokemon.id} className={styles.card}>
-                <MaterialCard
-                  name={pokemon.name}
-                  itemInCart={itemInCart}
-                  image={pokemon.image}
-                  price={pokemon.price}
-                  handleGoToDetails={() => handleGoToDetails(pokemon.id)}
-                  handleAddPokemonToCart={() => handleAddPokemonToCart(pokemon)}
-                  handleDeletePokemonFromCart={() =>
-                    handleDeletePokemonFromCart(pokemon.id)
-                  }
-                />
-              </div>
-            )}
+            items={pokemonList}
+            renderItems={(pokemon) => {
+              const isAddItemToCart =
+                cartItems.findIndex((item) => item.id === pokemon.id) !== -1;
+              return (
+                <div key={pokemon.id} className={styles.card}>
+                  <MaterialCard
+                    name={pokemon.name}
+                    image={pokemon.image}
+                    price={pokemon.price}
+                    handleGoToDetails={() => handleGoToDetails(pokemon.id)}
+                    handleAddPokemonToCart={() =>
+                      handleAddPokemonToCart(pokemon)
+                    }
+                    handleDeletePokemonFromCart={() =>
+                      handleDeletePokemonFromCart(pokemon.id)
+                    }
+                    isAddPokemonToCart={isAddItemToCart}
+                    handleGoToCartPage={handleGoToCartPage}
+                  />
+                </div>
+              );
+            }}
           />
         )}
       </div>

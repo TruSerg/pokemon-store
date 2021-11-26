@@ -13,10 +13,10 @@ const MaterialCard = ({
   image,
   name,
   price,
-  itemInCart,
   handleGoToDetails,
   handleAddPokemonToCart,
-  handleDeletePokemonFromCart,
+  isAddPokemonToCart,
+  handleGoToCartPage,
 }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -31,7 +31,8 @@ const MaterialCard = ({
       </CardContent>
       <CardActions>
         <Button
-          variant="primery"
+          className={styles.btn}
+          variant="outlined"
           color="success"
           onClick={handleGoToDetails}
           size="small"
@@ -40,14 +41,27 @@ const MaterialCard = ({
         </Button>
       </CardActions>
       <CardActions>
-        <Button
-          variant="primery"
-          color="success"
-          onClick={handleAddPokemonToCart}
-          size="small"
-        >
-          ADD TO CART
-        </Button>
+        {!isAddPokemonToCart ? (
+          <Button
+            className={styles.btn}
+            variant="outlined"
+            color="success"
+            onClick={handleAddPokemonToCart}
+            size="small"
+          >
+            ADD TO CART
+          </Button>
+        ) : (
+          <Button
+            className={styles.btn}
+            onClick={handleGoToCartPage}
+            variant="outlined"
+            color="success"
+            size="small"
+          >
+            IN THE CART
+          </Button>
+        )}
       </CardActions>
     </Card>
   );

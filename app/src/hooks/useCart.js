@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import {
   ADD_ITEM_REQUEST,
@@ -7,9 +8,11 @@ import {
   REMOVE_ITEM_REQUEST,
 } from "../pages/CartPage/actions";
 import { ADD_ORDER_REQUEST } from "../pages/UserAccountPage/actions";
+import { ROUTES } from "../routes/routeNames";
 
 const useCart = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const { info } = useSelector((state) => state.auth);
 
@@ -63,6 +66,10 @@ const useCart = () => {
     dispatch(ADD_ORDER_REQUEST(addOrder));
   }, [dispatch, itemsList, totalPrice, info]);
 
+  const handleGoToCartPage = useCallback(() => {
+    history.push(ROUTES.CART_PAGE);
+  }, [history]);
+
   return {
     list,
     itemsList,
@@ -71,6 +78,7 @@ const useCart = () => {
     handleIncrement,
     handleDecrement,
     handleConfirmOrder,
+    handleGoToCartPage,
   };
 };
 

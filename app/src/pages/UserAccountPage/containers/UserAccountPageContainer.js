@@ -8,12 +8,14 @@ const UserAccountPageContainer = () => {
   const dispatch = useDispatch();
 
   const { isLoading } = useSelector((state) => state.userAccountPage);
+
   const { info } = useSelector((state) => state.auth);
+
   const { itemsList, totalPrice, ordersList } = useSelector(
     (state) => state.userAccountPage
   );
 
-  useEffect(() => {
+  const isAddToCart = useEffect(() => {
     dispatch(GET_ORDER_REQUEST());
   }, [dispatch]);
 

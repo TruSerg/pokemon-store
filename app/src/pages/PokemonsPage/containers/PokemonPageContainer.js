@@ -14,13 +14,17 @@ const PokemonPageContainer = () => {
 
   const history = useHistory();
 
-  const { list, isLoading, currentPage } = useSelector(
+  const { pokemonList, isLoading, currentPage } = useSelector(
     (state) => state.pokemonsPage
   );
 
-  const { quantity } = useSelector((state) => state.cartPage);
+  const { itemsList, quantity } = useSelector((state) => state.cartPage);
 
-  const { handleAddPokemonToCart, handleDeletePokemonFromCart } = useCart();
+  const {
+    handleAddPokemonToCart,
+    handleDeletePokemonFromCart,
+    handleGoToCartPage,
+  } = useCart();
 
   const handleGoToDetails = useCallback(
     (id) => {
@@ -44,7 +48,8 @@ const PokemonPageContainer = () => {
 
   return (
     <PokemonPageLayout
-      list={list}
+      pokemonList={pokemonList}
+      cartItems={itemsList}
       isLoading={isLoading}
       quantity={quantity}
       currentPage={currentPage}
@@ -52,6 +57,7 @@ const PokemonPageContainer = () => {
       handlePageChange={handlePageChange}
       handleAddPokemonToCart={handleAddPokemonToCart}
       handleDeletePokemonFromCart={handleDeletePokemonFromCart}
+      handleGoToCartPage={handleGoToCartPage}
     />
   );
 };

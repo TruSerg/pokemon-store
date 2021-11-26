@@ -8,7 +8,16 @@ import {
   Typography,
 } from "@mui/material";
 
-const MaterialCardDetail = ({ image, name, price, handleAddPokemonToCart }) => {
+import styles from "./styles.module.scss";
+
+const MaterialCardDetail = ({
+  image,
+  name,
+  price,
+  handleAddPokemonToCart,
+  isAddPokemonToCart,
+  handleGoToCartPage,
+}) => {
   return (
     <Card sx={{ maxWidth: 300 }}>
       <CardActionArea>
@@ -23,9 +32,27 @@ const MaterialCardDetail = ({ image, name, price, handleAddPokemonToCart }) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button onClick={handleAddPokemonToCart} size="small" color="primary">
-          ADD TO CART
-        </Button>
+        {!isAddPokemonToCart ? (
+          <Button
+            className={styles.btn}
+            onClick={handleAddPokemonToCart}
+            variant="outlined"
+            size="small"
+            color="success"
+          >
+            ADD TO CART
+          </Button>
+        ) : (
+          <Button
+            className={styles.btn}
+            onClick={handleGoToCartPage}
+            variant="outlined"
+            size="small"
+            color="success"
+          >
+            IN THE CART
+          </Button>
+        )}
       </CardActions>
     </Card>
   );
