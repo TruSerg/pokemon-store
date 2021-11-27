@@ -55,7 +55,7 @@ const UserAccountPageLayout = ({ info, ordersList }) => {
                   <p>Total price: {order.totalPrice} coins</p>
                   <p>
                     Order date:{" "}
-                    {moment(order.createdAt).format("MMM Do YY, h:mm a")}
+                    {moment(order.createdAt).format("MMM Do YYYY, h:mm a")}
                   </p>
                 </Typography>
               </AccordionSummary>

@@ -1,21 +1,19 @@
-import PokemonDetailsPageLayout from "../components/PokemonDetailsPageLayout";
+import PokemonDetailsPageLayout from "../components/PokemonDetailsPageLayout/PokemonDetailsPageLayout";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import { useCallback, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 import useCart from "../../../hooks/useCart";
 
 import { GET_POKEMON_DETAILS_REQUEST } from "../actions";
-import { ROUTES } from "../../../routes/routeNames";
 
 const PokemonDetailsPageContainer = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const { id } = useParams();
 
-  const { info, isLoading } = useSelector((state) => state.pokemonDetails);
+  const { info, isLoading } = useSelector((state) => state.pokemonDetailsPage);
 
   const { itemsList } = useSelector((state) => state.cartPage);
 
