@@ -8,6 +8,7 @@ import { ROUTES } from "../../../routes/routeNames";
 import PokemonPageLayout from "../components/PokemonLayout/PokemonPageLayout";
 
 import useCart from "../../../hooks/useCart";
+import { useSnackBar } from "../../../hooks";
 
 const PokemonPageContainer = () => {
   const dispatch = useDispatch();
@@ -20,11 +21,7 @@ const PokemonPageContainer = () => {
 
   const { itemsList, quantity } = useSelector((state) => state.cartPage);
 
-  const {
-    handleAddPokemonToCart,
-    handleDeletePokemonFromCart,
-    handleGoToCartPage,
-  } = useCart();
+  const { handleAddPokemonToCart, handleGoToCartPage } = useCart();
 
   const handleGoToDetails = useCallback(
     (id) => {
@@ -56,7 +53,6 @@ const PokemonPageContainer = () => {
       handleGoToDetails={handleGoToDetails}
       handlePageChange={handlePageChange}
       handleAddPokemonToCart={handleAddPokemonToCart}
-      handleDeletePokemonFromCart={handleDeletePokemonFromCart}
       handleGoToCartPage={handleGoToCartPage}
     />
   );

@@ -9,6 +9,7 @@ import {
 } from "../pages/CartPage/actions";
 import { ADD_ORDER_REQUEST } from "../pages/UserAccountPage/actions";
 import { ROUTES } from "../routes/routeNames";
+import { useSnackBar } from "./index";
 
 const useCart = () => {
   const dispatch = useDispatch();
@@ -20,10 +21,13 @@ const useCart = () => {
 
   const { list } = useSelector((state) => state.pokemonsPage);
 
+  const { handleOpen } = useSnackBar();
+
   const handleAddPokemonToCart = useCallback(
     (pokemon) => {
       const addPokemon = { ...pokemon, quantity: 1 };
       dispatch(ADD_ITEM_REQUEST(addPokemon));
+      handleOpen();
     },
     [dispatch]
   );

@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 
+import Moment from "react-moment";
+
 import { CircularProgress } from "@mui/material";
 
 import MaterialCard from "../../../../commonComponents/MaterialCard";
@@ -16,7 +18,6 @@ const PokemonPageLayout = ({
   handleGoToDetails,
   handlePageChange,
   handleAddPokemonToCart,
-  handleDeletePokemonFromCart,
   handleGoToCartPage,
 }) => {
   return (
@@ -42,9 +43,6 @@ const PokemonPageLayout = ({
                     handleGoToDetails={() => handleGoToDetails(pokemon.id)}
                     handleAddPokemonToCart={() =>
                       handleAddPokemonToCart(pokemon)
-                    }
-                    handleDeletePokemonFromCart={() =>
-                      handleDeletePokemonFromCart(pokemon.id)
                     }
                     isAddPokemonToCart={isAddItemToCart}
                     handleGoToCartPage={handleGoToCartPage}

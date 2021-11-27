@@ -10,7 +10,6 @@ import {
 
 import styles from "./styles.module.scss";
 import CheckIcon from "@mui/icons-material/Check";
-import * as React from "react";
 
 const RegistrationForm = ({
   isFormValid,
@@ -101,7 +100,7 @@ const RegistrationForm = ({
         </form>
       </div>
       <div className={styles.snackBar}>
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Snackbar open={open} onClose={handleClose}>
           <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
             Your profile has been successfully created
             <Button

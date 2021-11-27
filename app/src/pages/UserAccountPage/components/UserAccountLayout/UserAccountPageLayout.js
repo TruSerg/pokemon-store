@@ -13,6 +13,8 @@ import {
   AccordionDetails,
 } from "@mui/material";
 
+import moment from "moment";
+
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import styles from "./styles.module.scss";
@@ -50,7 +52,11 @@ const UserAccountPageLayout = ({ info, ordersList }) => {
                 id="panel1a-header"
               >
                 <Typography>
-                  <strong>TOTAL PRICE: {order.totalPrice}</strong>
+                  <p>Total price: {order.totalPrice} coins</p>
+                  <p>
+                    Order date:{" "}
+                    {moment(order.createdAt).format("MMM Do YY, h:mm a")}
+                  </p>
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>

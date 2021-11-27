@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import CartPageLayout from "../components/CartLayout/CartPageLayout";
-import { useCart } from "../../../hooks";
+import { useCart, useSnackBar } from "../../../hooks";
 
 import { GET_CART_REQUEST } from "../actions";
 import { ROUTES } from "../../../routes/routeNames";
@@ -22,14 +22,11 @@ const CartPageContainer = () => {
   const { handleDeletePokemonFromCart, handleIncrement, handleDecrement } =
     useCart();
 
-  const [open, setOpen] = useState(false);
+  const { open, handleOpen, handleClose } = useSnackBar();
 
-  const handleOpen = useCallback(() => {
-    setOpen(true);
-  }, []);
+  const goToUserPage = useCallback(() => {
+    handleClose();
 
-  const handleClose = useCallback(() => {
-    setOpen(false);
     history.push(ROUTES.USER_PAGE);
 
     window.location.reload();
@@ -73,8 +70,7 @@ const CartPageContainer = () => {
       handleConfirmOrder={handleConfirmOrder}
       handleGoToUserPage={handleGoToUserPage}
       open={open}
-      handleOpen={handleOpen}
-      handleClose={handleClose}
+      goToUserPage={goToUserPage}
     />
   );
 };

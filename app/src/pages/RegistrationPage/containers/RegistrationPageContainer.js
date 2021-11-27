@@ -2,7 +2,7 @@ import isEmail from "validator/es/lib/isEmail";
 
 import RegistrationForm from "../components/RegistrationForm/RegistrationFormLayout";
 
-import { useForm } from "../../../hooks";
+import { useForm, useSnackBar } from "../../../hooks";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useLayoutEffect, useState } from "react";
@@ -18,15 +18,7 @@ const RegistrationPageContainer = () => {
 
   const { isLoading, isAuth, error } = useSelector((state) => state.signup);
 
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = useCallback(() => {
-    setOpen(true);
-  }, []);
-
-  const handleClose = useCallback((event, reason) => {
-    setOpen(false);
-  }, []);
+  const { open, handleOpen, handleClose } = useSnackBar();
 
   const [formData, handleChange] = useForm({
     email: "",
@@ -64,21 +56,19 @@ const RegistrationPageContainer = () => {
           dispatch(SIGN_UP_REQUEST(otherFields));
         }
       }
+      handleOpen();
     },
+
     [formData, dispatch]
   );
 
-  useLayoutEffect(() => {
-    handleOpen();
+  // useLayoutEffect(() => {}, [isAuth]);
+
+  const handleGoToLoginPage = useCallback(() => {
     if (isAuth) {
       history.push(ROUTES.LOGIN);
     }
-  }, [isAuth]);
-
-  const handleGoToLoginPage = useCallback(() => {
-    handleClose();
-    history.push(ROUTES.LOGIN);
-  }, [history]);
+  }, [history, isAuth]);
 
   return (
     <RegistrationForm

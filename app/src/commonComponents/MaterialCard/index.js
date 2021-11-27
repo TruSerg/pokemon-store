@@ -19,7 +19,7 @@ const MaterialCard = ({
   handleGoToCartPage,
 }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 200, minHeight: 450 }}>
       <CardMedia component="img" height="190" image={image} alt={name} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

@@ -16,8 +16,7 @@ const CartPageLayout = ({
   handleDecrement,
   handleDeletePokemonFromCart,
   handleConfirmOrder,
-  handleOpen,
-  handleClose,
+  goToUserPage,
   open,
 }) => {
   return (
@@ -84,7 +83,7 @@ const CartPageLayout = ({
         </div>
       </div>
       <div className={styles.snackBar}>
-        <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+        <Snackbar open={open} autoHideDuration={3000} onClose={goToUserPage}>
           <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
             Your order has been successfully placed
           </Alert>
