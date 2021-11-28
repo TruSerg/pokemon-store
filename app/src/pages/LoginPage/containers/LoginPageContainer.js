@@ -35,10 +35,6 @@ const LoginPageContainer = () => {
     [formData, isFormValid]
   );
 
-  const handleGoToSignup = useCallback(() => {
-    history.push(ROUTES.REGISTRATION);
-  }, []);
-
   useLayoutEffect(() => {
     if (isAuth) {
       history.push(ROUTES.POKEMONS_PAGE);
@@ -52,7 +48,6 @@ const LoginPageContainer = () => {
       formData={formData}
       onChange={handleChange}
       onSubmit={handleSubmit}
-      handleGoToSignup={handleGoToSignup}
       error={error}
     />
   );

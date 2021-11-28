@@ -13,7 +13,7 @@ const PokemonDetailsPageContainer = () => {
 
   const { id } = useParams();
 
-  const { info, isLoading } = useSelector((state) => state.pokemonDetailsPage);
+  const { info, isLoading } = useSelector((state) => state.pokemonDetails);
 
   const { itemsList } = useSelector((state) => state.cartPage);
 

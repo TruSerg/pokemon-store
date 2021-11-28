@@ -1,7 +1,5 @@
 import PropTypes from "prop-types";
 
-import Moment from "react-moment";
-
 import { CircularProgress } from "@mui/material";
 
 import MaterialCard from "../../../../commonComponents/MaterialCard";

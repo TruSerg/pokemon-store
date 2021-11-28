@@ -8,7 +8,6 @@ const LoginForm = ({
   formData,
   onChange,
   onSubmit,
-  handleGoToSignup,
   error,
 }) => {
   return (
@@ -42,11 +41,6 @@ const LoginForm = ({
                 role="submit"
               >
                 LOGIN
-              </button>
-            </div>
-            <div className={styles.button}>
-              <button className={styles.btn} onClick={handleGoToSignup}>
-                SIGNUP
               </button>
             </div>
             {error && <div>{error}</div>}

@@ -1,62 +1,153 @@
-* {
-  border: 0;
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
+  vertical-align: baseline;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 100%;
 }
 
-*, *::before, *::after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+* {
   box-sizing: border-box;
 }
 
-:focus, :active {
-  outline: none
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 
-a:focus, a:active {
-  outline: none
+blockquote,
+q {
+  quotes: none;
 }
 
-html, body {
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 
-html {
-  font-size: 16px
-}
-
-body {
-  font-family: inherit;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  min-height: 100vh;
-  font-size: 1rem;
-}
-
-h1, h2, h3, h4, h5, h6,
-p, ul, ol, li,
-figure, figcaption,
-input, textarea, select,
-button {
-  font-family: inherit;
-  font-size: inherit;
+a {
   margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background: transparent;
+  font-size: 100%;
 }
 
-ul, ol {
-  list-style: none
+ins {
+  text-decoration: none;
+  color: #000;
+  background-color: #ff9;
 }
 
-a, a:hover, a:visited {
-  text-decoration: none
+mark {
+  color: #000;
+  background-color: #ff9;
+  font-weight: bold;
+  font-style: italic;
 }
 
-button {
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
+del {
+  text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+  cursor: help;
+  border-bottom: 1px dotted;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+li {
+  list-style-type: none;
 }
