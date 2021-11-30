@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import BasicSelect from "../../../../commonComponents/Select";
 
 import {
@@ -14,7 +16,7 @@ import CheckIcon from "@mui/icons-material/Check";
 const RegistrationForm = ({
   isFormValid,
   formData,
-  open,
+  isOpen,
   handleClose,
   onSubmit,
   onChange,
@@ -100,7 +102,7 @@ const RegistrationForm = ({
         </form>
       </div>
       <div className={styles.snackBar}>
-        <Snackbar open={open} onClose={handleClose}>
+        <Snackbar open={isOpen} onClose={handleClose}>
           <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
             Your profile has been successfully created
             <Button
@@ -116,6 +118,27 @@ const RegistrationForm = ({
       </div>
     </div>
   );
+};
+
+RegistrationForm.propTypes = {
+  isFormValid: PropTypes.func.isRequired,
+  formData: PropTypes.objectOf(
+    PropTypes.shape({
+      email: PropTypes.string.isRequired,
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
+      gender: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
+      password: PropTypes.string.isRequired,
+      passwordConfirm: PropTypes.string.isRequired,
+    })
+  ),
+  isOpen: PropTypes.func.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired,
+  handleGoToLoginPage: PropTypes.func.isRequired,
 };
 
 export default RegistrationForm;

@@ -19,10 +19,13 @@ const CartPageContainer = () => {
     (state) => state.cartPage
   );
 
-  const { handleDeletePokemonFromCart, handleIncrement, handleDecrement } =
-    useCart();
+  const {
+    handleDeletePokemonFromCart,
+    handlePokemonQuantityIncrement,
+    handlePokemonQuantityDecrement,
+  } = useCart();
 
-  const { open, handleOpen, handleClose } = useSnackBar();
+  const { isOpen, handleOpen, handleClose } = useSnackBar();
 
   const goToUserPage = useCallback(() => {
     handleClose();
@@ -64,12 +67,12 @@ const CartPageContainer = () => {
       totalPrice={totalPrice}
       itemsList={itemsList}
       handleDeletePokemonFromCart={handleDeletePokemonFromCart}
-      handleIncrement={handleIncrement}
-      handleDecrement={handleDecrement}
+      handlePokemonQuantityIncrement={handlePokemonQuantityIncrement}
+      handlePokemonQuantityDecrement={handlePokemonQuantityDecrement}
       handleGoToDetails={handleGoToDetails}
       handleConfirmOrder={handleConfirmOrder}
       handleGoToUserPage={handleGoToUserPage}
-      open={open}
+      isOpen={isOpen}
       goToUserPage={goToUserPage}
     />
   );

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import {
   CardContent,
   Typography,
@@ -19,7 +21,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import styles from "./styles.module.scss";
 
-const UserAccountPageLayout = ({ info, ordersList }) => {
+const UserAccountPageLayout = ({ isLoading, info, ordersList, itemsList }) => {
   return (
     <div>
       <h1 className={styles.accountTitle}>PERSONAL ACCOUNT</h1>
@@ -95,6 +97,35 @@ const UserAccountPageLayout = ({ info, ordersList }) => {
       ))}
     </div>
   );
+};
+
+UserAccountPageLayout.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  info: PropTypes.objectOf(
+    PropTypes.shape({
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
+      gender: PropTypes.string.isRequired,
+    })
+  ),
+  ordersList: PropTypes.arrayOf(
+    PropTypes.shape({
+      totalPrice: PropTypes.number.isRequired,
+      customerId: PropTypes.string.isRequired,
+      createdAt: PropTypes.string.isRequired,
+      itemsList: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          name: PropTypes.string.name,
+          image: PropTypes.string.isRequired,
+          quantity: PropTypes.number.isRequired,
+          price: PropTypes.number.isRequired,
+        })
+      ),
+    })
+  ),
 };
 
 export default UserAccountPageLayout;

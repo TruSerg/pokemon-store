@@ -63,4 +63,31 @@ const PokemonDetailsPageLayout = ({
   );
 };
 
+PokemonDetailsPageLayout.propTypes = {
+  abilities: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    })
+  ),
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+    })
+  ),
+  info: PropTypes.objectOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+    })
+  ),
+  isLoading: PropTypes.bool.isRequired,
+  handleAddPokemonToCart: PropTypes.func.isRequired,
+  addPokemonToCart: PropTypes.func.isRequired,
+  isAddPokemonToCart: PropTypes.func.isRequired,
+  handleGoToCartPage: PropTypes.func.isRequired,
+};
+
 export default PokemonDetailsPageLayout;

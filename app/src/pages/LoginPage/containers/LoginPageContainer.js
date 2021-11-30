@@ -1,13 +1,14 @@
-import LoginForm from "../components/LoginForm";
-import { useForm } from "../../../hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useLayoutEffect } from "react";
 import { useHistory } from "react-router-dom";
+import isEmail from "validator/es/lib/isEmail";
+
+import { useForm } from "../../../hooks";
 
 import { LOG_IN_REQUEST } from "../actions";
 import { ROUTES } from "../../../routes/routeNames";
 
-import isEmail from "validator/es/lib/isEmail";
+import LoginFormLayout from "../components/LoginForm/LoginFormLayout";
 
 const LoginPageContainer = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const LoginPageContainer = () => {
   }, [isAuth]);
 
   return (
-    <LoginForm
+    <LoginFormLayout
       isLoading={isLoading}
       isFormValid={isFormValid}
       formData={formData}

@@ -1,8 +1,9 @@
 import { CircularProgress, Input } from "@mui/material";
 
 import styles from "./styles.module.scss";
+import PropTypes from "prop-types";
 
-const LoginForm = ({
+const LoginFormLayout = ({
   isLoading,
   isFormValid,
   formData,
@@ -51,4 +52,18 @@ const LoginForm = ({
   );
 };
 
-export default LoginForm;
+LoginFormLayout.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  isFormValid: PropTypes.func.isRequired,
+  formData: PropTypes.objectOf(
+    PropTypes.shape({
+      email: PropTypes.string.isRequired,
+      password: PropTypes.string.isRequired,
+    })
+  ),
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired,
+};
+
+export default LoginFormLayout;

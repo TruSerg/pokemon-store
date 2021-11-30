@@ -63,7 +63,7 @@ const PokemonPageLayout = ({
 };
 
 PokemonPageLayout.propTypes = {
-  list: PropTypes.arrayOf(
+  pokemonList: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,

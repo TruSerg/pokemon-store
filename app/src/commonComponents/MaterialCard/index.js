@@ -6,8 +6,9 @@ import {
   Button,
   Typography,
 } from "@mui/material";
+import { withStyles } from "@mui/styles";
 
-import styles from "./styles.module.scss";
+import styles from "./styles";
 
 const MaterialCard = ({
   image,
@@ -17,15 +18,30 @@ const MaterialCard = ({
   handleAddPokemonToCart,
   isAddPokemonToCart,
   handleGoToCartPage,
+  classes,
 }) => {
   return (
-    <Card sx={{ maxWidth: 200, minHeight: 450 }}>
-      <CardMedia component="img" height="190" image={image} alt={name} />
+    <Card className={classes.wrapper}>
+      <CardMedia
+        className={classes.image}
+        component="img"
+        image={image}
+        alt={name}
+      />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          className={classes.name}
+          gutterBottom
+          variant="h5"
+          component="div"
+        >
           {name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          className={classes.price}
+          variant="body2"
+          color="text.secondary"
+        >
           Price: {price} coins
         </Typography>
       </CardContent>
@@ -67,4 +83,4 @@ const MaterialCard = ({
   );
 };
 
-export default MaterialCard;
+export default withStyles(styles)(MaterialCard);

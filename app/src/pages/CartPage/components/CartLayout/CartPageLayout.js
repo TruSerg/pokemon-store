@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import { Button, Alert } from "@mui/material";
 import { Snackbar } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
@@ -6,18 +8,17 @@ import List from "../../../../commonComponents/List";
 
 import styles from "./styles.module.scss";
 
-import * as React from "react";
-
 const CartPageLayout = ({
+  isLoading,
   itemsList,
   totalPrice,
   handleGoToDetails,
-  handleIncrement,
-  handleDecrement,
+  handlePokemonQuantityIncrement,
+  handlePokemonQuantityDecrement,
   handleDeletePokemonFromCart,
   handleConfirmOrder,
   goToUserPage,
-  open,
+  isOpen,
 }) => {
   return (
     <div className={styles.orderArea}>
@@ -38,14 +39,14 @@ const CartPageLayout = ({
               <div className={styles.buttons}>
                 <button
                   className={styles.cardBtn}
-                  onClick={() => handleIncrement(item)}
+                  onClick={() => handlePokemonQuantityIncrement(item)}
                 >
                   +
                 </button>
                 <span className={styles.cardDisplay}> {item.quantity} </span>
                 <button
                   className={styles.cardBtn}
-                  onClick={() => handleDecrement(item)}
+                  onClick={() => handlePokemonQuantityDecrement(item)}
                 >
                   -
                 </button>
@@ -81,7 +82,7 @@ const CartPageLayout = ({
         </div>
       </div>
       <div className={styles.snackBar}>
-        <Snackbar open={open} autoHideDuration={3000} onClose={goToUserPage}>
+        <Snackbar open={isOpen} autoHideDuration={3000} onClose={goToUserPage}>
           <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
             Your order has been successfully placed
           </Alert>
@@ -89,6 +90,27 @@ const CartPageLayout = ({
       </div>
     </div>
   );
+};
+
+CartPageLayout.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  itemsList: PropTypes.arrayOf(
+    PropTypes.shape({
+      price: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      quantity: PropTypes.number.isRequired,
+    })
+  ),
+  totalPrice: PropTypes.number.isRequired,
+  handleGoToDetails: PropTypes.func.isRequired,
+  handlePokemonQuantityIncrement: PropTypes.func.isRequired,
+  handlePokemonQuantityDecrement: PropTypes.func.isRequired,
+  handleDeletePokemonFromCart: PropTypes.func.isRequired,
+  handleConfirmOrder: PropTypes.func.isRequired,
+  goToUserPage: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
 };
 
 export default CartPageLayout;

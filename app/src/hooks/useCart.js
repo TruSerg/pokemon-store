@@ -39,7 +39,7 @@ const useCart = () => {
     [dispatch]
   );
 
-  const handleIncrement = useCallback(
+  const handlePokemonQuantityIncrement = useCallback(
     (pokemon) => {
       const updatedPokemon = { id: pokemon.id, quantity: pokemon.quantity + 1 };
       dispatch(CHANGE_CART_REQUEST(updatedPokemon));
@@ -47,7 +47,7 @@ const useCart = () => {
     [dispatch]
   );
 
-  const handleDecrement = useCallback(
+  const handlePokemonQuantityDecrement = useCallback(
     (pokemon) => {
       if (pokemon.quantity > 0) {
         const updatedPokemon = {
@@ -79,8 +79,8 @@ const useCart = () => {
     itemsList,
     handleAddPokemonToCart,
     handleDeletePokemonFromCart,
-    handleIncrement,
-    handleDecrement,
+    handlePokemonQuantityIncrement,
+    handlePokemonQuantityDecrement,
     handleConfirmOrder,
     handleGoToCartPage,
   };

@@ -29,7 +29,7 @@ const Header = () => {
           <div>
             <Link to={ROUTES.POKEMONS_PAGE}>
               <IconButton>
-                <KeyboardBackspaceOutlined fontSize="large" />
+                <KeyboardBackspaceOutlined />
               </IconButton>
             </Link>
           </div>
@@ -37,17 +37,17 @@ const Header = () => {
             <Link to={ROUTES.CART_PAGE}>
               <IconButton>
                 <Badge badgeContent={quantity} color="success">
-                  <ShoppingCartOutlined fontSize="large" />
+                  <ShoppingCartOutlined />
                 </Badge>
               </IconButton>
             </Link>
             <Link to={ROUTES.USER_PAGE}>
               <IconButton>
-                <PersonOutline fontSize="large" />
+                <PersonOutline />
               </IconButton>
             </Link>
             <IconButton onClick={handleLogout}>
-              <Logout fontSize="large" />
+              <Logout />
             </IconButton>
           </div>
         </div>
@@ -55,13 +55,13 @@ const Header = () => {
         <div className={styles.wrapperLogin}>
           <Link to={ROUTES.LOGIN}>
             <IconButton>
-              <Login fontSize="large" />
+              <Login />
             </IconButton>
           </Link>
 
           <Link to={ROUTES.REGISTRATION}>
             <IconButton>
-              <HowToReg fontSize="large" />
+              <HowToReg />
             </IconButton>
           </Link>
         </div>

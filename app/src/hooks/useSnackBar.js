@@ -1,8 +1,7 @@
 import { useState, useCallback } from "react";
-import { ROUTES } from "../routes/routeNames";
 
 const useSnackBar = () => {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
 
   const handleOpen = useCallback(() => {
     setOpen(true);
@@ -15,7 +14,7 @@ const useSnackBar = () => {
     setOpen(false);
   }, []);
 
-  return { open, handleOpen, handleClose };
+  return { isOpen, handleOpen, handleClose };
 };
 
 export default useSnackBar;
