@@ -28,7 +28,7 @@ const MaterialCard = ({
         image={image}
         alt={name}
       />
-      <CardContent>
+      <CardContent className={classes.cardContent}>
         <Typography
           className={classes.name}
           gutterBottom
@@ -37,19 +37,15 @@ const MaterialCard = ({
         >
           {name}
         </Typography>
-        <Typography
-          className={classes.price}
-          variant="body2"
-          color="text.secondary"
-        >
+        <Typography className={classes.price} variant="body2">
           Price: {price} coins
         </Typography>
       </CardContent>
       <CardActions>
         <Button
-          className={styles.btn}
+          className={classes.btn}
           variant="outlined"
-          color="success"
+          color="secondary"
           onClick={handleGoToDetails}
           size="small"
         >
@@ -59,9 +55,9 @@ const MaterialCard = ({
       <CardActions>
         {!isAddPokemonToCart ? (
           <Button
-            className={styles.btn}
+            className={classes.btn}
             variant="outlined"
-            color="success"
+            color="secondary"
             onClick={handleAddPokemonToCart}
             size="small"
           >
@@ -69,10 +65,10 @@ const MaterialCard = ({
           </Button>
         ) : (
           <Button
-            className={styles.btn}
+            className={classes.btn}
             onClick={handleGoToCartPage}
             variant="outlined"
-            color="success"
+            color="secondary"
             size="small"
           >
             IN THE CART

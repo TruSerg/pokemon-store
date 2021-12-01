@@ -10,30 +10,31 @@ import {
   Login,
 } from "@mui/icons-material";
 import { Badge, Box, IconButton } from "@mui/material";
+import { withStyles } from "@mui/styles";
 
 import { useLogout } from "../../hooks";
 
 import { ROUTES } from "../../routes/routeNames";
 
-import styles from "./styles.module.scss";
+import styles from "./styles";
 
-const Header = () => {
+const Header = ({ classes }) => {
   const { isAuth } = useSelector((state) => state.auth);
   const { quantity } = useSelector((state) => state.cartPage);
   const handleLogout = useLogout();
 
   return (
-    <div className={styles.wrapper}>
+    <Box className={classes.wrapper}>
       {isAuth ? (
-        <div className={styles.wrapperNav}>
-          <div>
+        <Box className={classes.wrapperNav}>
+          <Box>
             <Link to={ROUTES.POKEMONS_PAGE}>
               <IconButton>
                 <KeyboardBackspaceOutlined />
               </IconButton>
             </Link>
-          </div>
-          <div className={styles.wrapperLink}>
+          </Box>
+          <Box className={classes.wrapperLink}>
             <Link to={ROUTES.CART_PAGE}>
               <IconButton>
                 <Badge badgeContent={quantity} color="success">
@@ -49,10 +50,10 @@ const Header = () => {
             <IconButton onClick={handleLogout}>
               <Logout />
             </IconButton>
-          </div>
-        </div>
+          </Box>
+        </Box>
       ) : (
-        <div className={styles.wrapperLogin}>
+        <Box className={classes.wrapperLogin}>
           <Link to={ROUTES.LOGIN}>
             <IconButton>
               <Login />
@@ -64,10 +65,10 @@ const Header = () => {
               <HowToReg />
             </IconButton>
           </Link>
-        </div>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 };
 
-export default Header;
+export default withStyles(styles)(Header);

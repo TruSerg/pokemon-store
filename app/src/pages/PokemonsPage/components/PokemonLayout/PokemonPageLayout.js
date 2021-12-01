@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
 
 import { CircularProgress } from "@mui/material";
+import { withStyles } from "@mui/styles";
 
 import MaterialCard from "../../../../commonComponents/MaterialCard";
 import CustomPagination from "../../../../commonComponents/CustomPagination";
 import List from "../../../../commonComponents/List";
 
-import styles from "./styles.module.scss";
+import styles from "./styles";
 
 const PokemonPageLayout = ({
   pokemonList,
@@ -17,13 +18,14 @@ const PokemonPageLayout = ({
   handlePageChange,
   handleAddPokemonToCart,
   handleGoToCartPage,
+  classes,
 }) => {
   return (
     <div>
-      <h1 className={styles.title}>POKEMONS</h1>
-      <div className={styles.cardsArea}>
+      <h1 className={classes.title}>POKEMONS</h1>
+      <div className={classes.cardsArea}>
         {isLoading ? (
-          <div className={styles.progressArea}>
+          <div className={classes.progressArea}>
             <CircularProgress />
           </div>
         ) : (
@@ -33,7 +35,7 @@ const PokemonPageLayout = ({
               const isAddItemToCart =
                 cartItems.findIndex((item) => item.id === pokemon.id) !== -1;
               return (
-                <div key={pokemon.id} className={styles.card}>
+                <div key={pokemon.id} className={classes.card}>
                   <MaterialCard
                     name={pokemon.name}
                     image={pokemon.image}
@@ -51,7 +53,7 @@ const PokemonPageLayout = ({
           />
         )}
       </div>
-      <div className={styles.paginationArea}>
+      <div className={classes.paginationArea}>
         <CustomPagination
           currentPage={currentPage}
           onPageChange={handlePageChange}
@@ -71,4 +73,4 @@ PokemonPageLayout.propTypes = {
   ),
 };
 
-export default PokemonPageLayout;
+export default withStyles(styles)(PokemonPageLayout);

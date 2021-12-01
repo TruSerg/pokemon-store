@@ -58,6 +58,7 @@
     ]
   },
   "devDependencies": {
+    "@mui/lab": "^5.0.0-alpha.58",
     "prettier": "^2.4.1",
     "prop-types": "^15.7.2",
     "redux-devtools-extension": "^2.13.9"
