@@ -8,10 +8,12 @@ import {
   Snackbar,
   Button,
   Input,
+  Box,
 } from "@mui/material";
-
-import styles from "./styles.module.scss";
 import CheckIcon from "@mui/icons-material/Check";
+import { withStyles } from "@mui/styles";
+
+import styles from "./styles";
 
 const RegistrationForm = ({
   isFormValid,
@@ -22,12 +24,13 @@ const RegistrationForm = ({
   onChange,
   error,
   handleGoToLoginPage,
+  classes,
 }) => {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.form}>
+    <Box className={classes.wrapper}>
+      <Box className={classes.form}>
         <form onSubmit={onSubmit}>
-          <div>
+          <Box>
             <Input
               type="email"
               value={formData.email}
@@ -35,8 +38,8 @@ const RegistrationForm = ({
               onChange={onChange}
               placeholder="Email"
             />
-          </div>
-          <div>
+          </Box>
+          <Box>
             <Input
               type="text"
               value={formData.firstName}
@@ -44,8 +47,8 @@ const RegistrationForm = ({
               onChange={onChange}
               placeholder="First name"
             />
-          </div>
-          <div>
+          </Box>
+          <Box>
             <Input
               type="text"
               value={formData.lastName}
@@ -53,8 +56,8 @@ const RegistrationForm = ({
               onChange={onChange}
               placeholder="Last name"
             />
-          </div>
-          <div>
+          </Box>
+          <Box>
             <Input
               type="phone"
               value={formData.phone}
@@ -62,8 +65,8 @@ const RegistrationForm = ({
               onChange={onChange}
               placeholder="Phone"
             />
-          </div>
-          <div>
+          </Box>
+          <Box>
             <Input
               type="password"
               value={formData.password}
@@ -71,8 +74,8 @@ const RegistrationForm = ({
               onChange={onChange}
               placeholder="Password"
             />
-          </div>
-          <div className={styles.input}>
+          </Box>
+          <Box className={classes.input}>
             <Input
               type="password"
               value={formData.passwordConfirm}
@@ -80,43 +83,44 @@ const RegistrationForm = ({
               onChange={onChange}
               placeholder="Confirm password"
             />
-          </div>
-          <div className={styles.select}>
+          </Box>
+          <Box className={classes.select}>
             <BasicSelect
               value={formData.gender}
               name="gender"
               label="GENDER"
               onChange={onChange}
             />
-          </div>
-          {error && <div className={styles.error}>{error}!</div>}
-          <div className={styles.button}>
-            <button
-              className={styles.btn}
+          </Box>
+          {error && <Box className={classes.error}>{error}!</Box>}
+          <Box className={classes.button}>
+            <Button
+              variant="outlined"
+              className={classes.btn}
               disabled={!isFormValid}
               role="submit"
             >
               SIGNUP
-            </button>
-          </div>
+            </Button>
+          </Box>
         </form>
-      </div>
-      <div className={styles.snackBar}>
+      </Box>
+      <Box className={classes.snackBar}>
         <Snackbar open={isOpen} onClose={handleClose}>
           <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
             Your profile has been successfully created
-            <Button
+            <button
               onClick={handleGoToLoginPage}
               variant="contained"
               color="success"
               size="small"
             >
               LOGIN
-            </Button>
+            </button>
           </Alert>
         </Snackbar>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
@@ -141,4 +145,4 @@ RegistrationForm.propTypes = {
   handleGoToLoginPage: PropTypes.func.isRequired,
 };
 
-export default RegistrationForm;
+export default withStyles(styles)(RegistrationForm);

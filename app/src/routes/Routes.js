@@ -1,7 +1,7 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import PokemonPageContainer from "../pages/PokemonsPage/containers/PokemonPageContainer";
-import PokemonDetailsPageContainer from "../pages/PokemonDetailedPage/containers/pokemonDetailsPageContainer";
+import PokemonDetailsPageContainer from "../pages/PokemonDetailedPage/containers/PokemonDetailsPageContainer";
 import LoginPageContainer from "../pages/LoginPage/containers/LoginPageContainer";
 import CartPageContainer from "../pages/CartPage/containers/CartPageContainer";
 import UserAccountPageContainer from "../pages/UserAccountPage/containers/UserAccountPageContainer";

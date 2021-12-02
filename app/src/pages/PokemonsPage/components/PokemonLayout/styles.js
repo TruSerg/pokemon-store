@@ -8,6 +8,7 @@ const styles = () => ({
 
   title: {
     textAlign: "center",
+    marginBottom: "20px",
   },
 
   card: {

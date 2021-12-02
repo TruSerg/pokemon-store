@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 
-import { Button, Alert } from "@mui/material";
+import { Button, Alert, Box } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import { Snackbar } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 
 import List from "../../../../commonComponents/List";
 
-import styles from "./styles.module.scss";
+import styles from "./styles";
 
 const CartPageLayout = ({
   isLoading,
@@ -20,58 +20,58 @@ const CartPageLayout = ({
   handleConfirmOrder,
   goToUserPage,
   isOpen,
+  classes,
 }) => {
   return (
-    <div className={styles.orderArea}>
-      <h1 className={styles.orderTitle}>SHOPPING CART</h1>
-      <div className={styles.cardsArea}>
+    <Box>
+      <h1 className={classes.orderTitle}>SHOPPING CART</h1>
+      <Box className={classes.cardsArea}>
         <List
           items={itemsList}
           renderItems={(item) => (
-            <div className={styles.cardsOrder} key={item.id}>
-              <div>
+            <Box className={classes.cardsOrder} key={item.id}>
+              <Box>
                 <img
-                  className={styles.cardImage}
                   src={item.image}
                   onClick={() => handleGoToDetails(item.id)}
                 />
-                <p className={styles.pokeName}>{item.name}</p>
-              </div>
-              <div className={styles.buttons}>
+                <p>{item.name}</p>
+              </Box>
+              <Box className={classes.buttons}>
                 <button
-                  className={styles.cardBtn}
+                  className={classes.cardBtn}
                   onClick={() => handlePokemonQuantityIncrement(item)}
                 >
                   +
                 </button>
-                <span className={styles.cardDisplay}> {item.quantity} </span>
+                <span className={classes.cardDisplay}> {item.quantity} </span>
                 <button
-                  className={styles.cardBtn}
+                  className={classes.cardBtn}
                   onClick={() => handlePokemonQuantityDecrement(item)}
                 >
                   -
                 </button>
-                <div>
+                <Box>
                   <Button
                     variant="outlined"
                     size="small"
-                    className={styles.cardButton}
+                    className={classes.cardButton}
                     onClick={() => handleDeletePokemonFromCart(item.id)}
                   >
                     DELETE
                   </Button>
-                </div>
-              </div>
+                </Box>
+              </Box>
               <div>{item.quantity * item.price} coins</div>
-            </div>
+            </Box>
           )}
         />
-      </div>
-      <div className={styles.confirmArea}>
+      </Box>
+      <Box className={classes.confirmArea}>
         <h3>CONFIRM THE ORDER</h3>
-        <div>
-          <span className={styles.confirmItem}>TOTAL PRICE:</span>
-          <span className={styles.confirmItem}>{totalPrice} coins</span>
+        <Box>
+          <span className={classes.confirmItem}>TOTAL PRICE:</span>
+          <span className={classes.confirmItem}>{totalPrice} coins</span>
           <Button
             disabled={totalPrice === 0}
             onClick={handleConfirmOrder}
@@ -80,16 +80,16 @@ const CartPageLayout = ({
           >
             CONFIRM
           </Button>
-        </div>
-      </div>
-      <div className={styles.snackBar}>
+        </Box>
+      </Box>
+      <Box>
         <Snackbar open={isOpen} autoHideDuration={3000} onClose={goToUserPage}>
           <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
             Your order has been successfully placed
           </Alert>
         </Snackbar>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
@@ -114,4 +114,4 @@ CartPageLayout.propTypes = {
   isOpen: PropTypes.bool.isRequired,
 };
 
-export default CartPageLayout;
+export default withStyles(styles)(CartPageLayout);

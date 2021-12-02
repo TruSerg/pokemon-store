@@ -13,20 +13,27 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Box,
 } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { withStyles } from "@mui/styles";
 
 import moment from "moment";
 
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import styles from "./styles";
 
-import styles from "./styles.module.scss";
-
-const UserAccountPageLayout = ({ isLoading, info, ordersList, itemsList }) => {
+const UserAccountPageLayout = ({
+  isLoading,
+  info,
+  ordersList,
+  itemsList,
+  classes,
+}) => {
   return (
-    <div>
-      <h1 className={styles.accountTitle}>PERSONAL ACCOUNT</h1>
-      <div>
-        <div>
+    <Box>
+      <h1 className={classes.accountTitle}>PERSONAL ACCOUNT</h1>
+      <Box>
+        <Box>
           <CardContent>
             <h2>PERSONAL DATA</h2>
             <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
@@ -42,11 +49,11 @@ const UserAccountPageLayout = ({ isLoading, info, ordersList, itemsList }) => {
               {`Gender: ${info.gender}`}
             </Typography>
           </CardContent>
-        </div>
-      </div>
+        </Box>
+      </Box>
       {ordersList?.map((order) => (
-        <div key={order._id}>
-          <div className={styles.accordion}>
+        <Box key={order._id}>
+          <Box className={classes.accordion}>
             <Accordion>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -92,10 +99,10 @@ const UserAccountPageLayout = ({ isLoading, info, ordersList, itemsList }) => {
                 </Typography>
               </AccordionDetails>
             </Accordion>
-          </div>
-        </div>
+          </Box>
+        </Box>
       ))}
-    </div>
+    </Box>
   );
 };
 
@@ -128,4 +135,4 @@ UserAccountPageLayout.propTypes = {
   ),
 };
 
-export default UserAccountPageLayout;
+export default withStyles(styles)(UserAccountPageLayout);

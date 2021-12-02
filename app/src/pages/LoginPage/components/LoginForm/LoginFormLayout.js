@@ -1,7 +1,9 @@
-import { CircularProgress, Input } from "@mui/material";
-
-import styles from "./styles.module.scss";
 import PropTypes from "prop-types";
+
+import { Box, Button, CircularProgress, Input } from "@mui/material";
+import { withStyles } from "@mui/styles";
+
+import styles from "./styles";
 
 const LoginFormLayout = ({
   isLoading,
@@ -10,13 +12,14 @@ const LoginFormLayout = ({
   onChange,
   onSubmit,
   error,
+  classes,
 }) => {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.formArea}>
-        <div className={styles.form}>
+    <Box className={classes.wrapper}>
+      <Box className={classes.formArea}>
+        <Box className={classes.form}>
           <form onSubmit={onSubmit}>
-            <div>
+            <Box>
               <Input
                 type="email"
                 value={formData.email}
@@ -24,8 +27,8 @@ const LoginFormLayout = ({
                 onChange={onChange}
                 placeholder="Email"
               />
-            </div>
-            <div className={styles.input}>
+            </Box>
+            <Box className={classes.input}>
               <Input
                 type="password"
                 value={formData.password}
@@ -33,22 +36,23 @@ const LoginFormLayout = ({
                 onChange={onChange}
                 placeholder="Password"
               />
-            </div>
+            </Box>
 
-            <div className={styles.button}>
+            <Box className={classes.button}>
               <button
-                className={styles.btn}
+                variant="outlined"
+                className={classes.btn}
                 disabled={!isFormValid}
                 role="submit"
               >
                 LOGIN
               </button>
-            </div>
+            </Box>
             {error && <div>{error}</div>}
           </form>
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
@@ -66,4 +70,4 @@ LoginFormLayout.propTypes = {
   error: PropTypes.string.isRequired,
 };
 
-export default LoginFormLayout;
+export default withStyles(styles)(LoginFormLayout);

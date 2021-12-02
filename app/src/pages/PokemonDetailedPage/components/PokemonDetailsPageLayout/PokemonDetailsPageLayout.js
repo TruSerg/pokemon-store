@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
 
-import { CircularProgress } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
+import { withStyles } from "@mui/styles";
 
 import MaterialCardDetail from "../../../../commonComponents/MaterialCardDetail";
 
-import styles from "./styles.module.scss";
+import styles from "./styles";
 
 const PokemonDetailsPageLayout = ({
   abilities,
@@ -15,18 +16,19 @@ const PokemonDetailsPageLayout = ({
   addPokemonToCart,
   isAddPokemonToCart,
   handleGoToCartPage,
+  classes,
 }) => {
   return (
-    <div>
-      <h1 className={styles.detailTitle}>DETAILS</h1>
-      <div>
+    <Box>
+      <h1 className={classes.detailTitle}>DETAILS</h1>
+      <Box>
         {isLoading ? (
-          <div className={styles.progressArea}>
+          <Box className={classes.progressArea}>
             <CircularProgress />
-          </div>
+          </Box>
         ) : (
-          <div>
-            <div className={styles.cardArea}>
+          <Box>
+            <Box className={classes.cardArea}>
               <MaterialCardDetail
                 key={info.id}
                 name={info.name}
@@ -38,28 +40,28 @@ const PokemonDetailsPageLayout = ({
                 isAddPokemonToCart={isAddPokemonToCart}
                 handleGoToCartPage={handleGoToCartPage}
               />
-            </div>
-            <div className={styles.wrapperInfo}>
+            </Box>
+            <Box className={classes.wrapperInfo}>
               <h2>ABILITIES</h2>
               {abilities?.map(({ title, description }) => (
-                <div key={title}>
+                <Box key={title}>
                   <h3>{title}</h3>
                   <p>{description}</p>
-                </div>
+                </Box>
               ))}
               <h2>STATS</h2>
               {stats?.map(({ title, value }) => (
-                <div key={title}>
+                <Box key={title}>
                   <p>
                     {title} : {value}
                   </p>
-                </div>
+                </Box>
               ))}
-            </div>
-          </div>
+            </Box>
+          </Box>
         )}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
@@ -90,4 +92,4 @@ PokemonDetailsPageLayout.propTypes = {
   handleGoToCartPage: PropTypes.func.isRequired,
 };
 
-export default PokemonDetailsPageLayout;
+export default withStyles(styles)(PokemonDetailsPageLayout);
