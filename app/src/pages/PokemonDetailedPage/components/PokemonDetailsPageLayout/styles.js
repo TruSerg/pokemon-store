@@ -1,6 +1,12 @@
 const styles = () => ({
+  detailsWrapper: {
+    paddingBottom: "50px",
+  },
+
   detailTitle: {
     textAlign: "center",
+    fontSize: "28px",
+    marginBottom: "30px",
   },
 
   wrapperInfo: {

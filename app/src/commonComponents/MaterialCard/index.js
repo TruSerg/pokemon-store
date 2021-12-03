@@ -5,6 +5,7 @@ import {
   CardMedia,
   Button,
   Typography,
+  Box,
 } from "@mui/material";
 import { withStyles } from "@mui/styles";
 
@@ -21,8 +22,9 @@ const MaterialCard = ({
   classes,
 }) => {
   return (
-    <Card className={classes.wrapper}>
+    <Card className={classes.cardWrapper}>
       <CardMedia
+        onClick={handleGoToDetails}
         className={classes.image}
         component="img"
         image={image}
@@ -45,7 +47,7 @@ const MaterialCard = ({
         <Button
           className={classes.btn}
           variant="outlined"
-          color="secondary"
+          color="success"
           onClick={handleGoToDetails}
           size="small"
         >
@@ -57,7 +59,7 @@ const MaterialCard = ({
           <Button
             className={classes.btn}
             variant="outlined"
-            color="secondary"
+            color="success"
             onClick={handleAddPokemonToCart}
             size="small"
           >
@@ -68,7 +70,7 @@ const MaterialCard = ({
             className={classes.btn}
             onClick={handleGoToCartPage}
             variant="outlined"
-            color="secondary"
+            color="success"
             size="small"
           >
             IN THE CART

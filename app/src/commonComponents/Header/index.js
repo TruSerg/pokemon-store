@@ -5,11 +5,12 @@ import {
   ShoppingCartOutlined,
   PersonOutline,
   Logout,
-  KeyboardBackspaceOutlined,
   HowToReg,
   Login,
 } from "@mui/icons-material";
-import { Badge, Box, IconButton } from "@mui/material";
+import SettingsBackupRestoreRoundedIcon from "@mui/icons-material/SettingsBackupRestoreRounded";
+
+import { Badge, Box, Container, IconButton } from "@mui/material";
 import { withStyles } from "@mui/styles";
 
 import { useLogout } from "../../hooks";
@@ -24,49 +25,51 @@ const Header = ({ classes }) => {
   const handleLogout = useLogout();
 
   return (
-    <Box className={classes.wrapper}>
-      {isAuth ? (
-        <Box className={classes.wrapperNav}>
-          <Box>
-            <Link to={ROUTES.POKEMONS_PAGE}>
-              <IconButton>
-                <KeyboardBackspaceOutlined />
+    <Box className={classes.headerWrapper}>
+      <Container>
+        {isAuth ? (
+          <Box className={classes.wrapperNav}>
+            <Box>
+              <Link to={ROUTES.POKEMONS_PAGE}>
+                <IconButton>
+                  <SettingsBackupRestoreRoundedIcon />
+                </IconButton>
+              </Link>
+            </Box>
+            <Box className={classes.wrapperLink}>
+              <Link to={ROUTES.CART_PAGE}>
+                <IconButton>
+                  <Badge badgeContent={quantity} color="success">
+                    <ShoppingCartOutlined />
+                  </Badge>
+                </IconButton>
+              </Link>
+              <Link to={ROUTES.USER_PAGE}>
+                <IconButton>
+                  <PersonOutline />
+                </IconButton>
+              </Link>
+              <IconButton onClick={handleLogout}>
+                <Logout />
               </IconButton>
-            </Link>
+            </Box>
           </Box>
-          <Box className={classes.wrapperLink}>
-            <Link to={ROUTES.CART_PAGE}>
+        ) : (
+          <Box className={classes.wrapperLogin}>
+            <Link to={ROUTES.LOGIN}>
               <IconButton>
-                <Badge badgeContent={quantity} color="success">
-                  <ShoppingCartOutlined />
-                </Badge>
+                <Login />
               </IconButton>
             </Link>
-            <Link to={ROUTES.USER_PAGE}>
-              <IconButton>
-                <PersonOutline />
-              </IconButton>
-            </Link>
-            <IconButton onClick={handleLogout}>
-              <Logout />
-            </IconButton>
-          </Box>
-        </Box>
-      ) : (
-        <Box className={classes.wrapperLogin}>
-          <Link to={ROUTES.LOGIN}>
-            <IconButton>
-              <Login />
-            </IconButton>
-          </Link>
 
-          <Link to={ROUTES.REGISTRATION}>
-            <IconButton>
-              <HowToReg />
-            </IconButton>
-          </Link>
-        </Box>
-      )}
+            <Link to={ROUTES.REGISTRATION}>
+              <IconButton>
+                <HowToReg />
+              </IconButton>
+            </Link>
+          </Box>
+        )}
+      </Container>
     </Box>
   );
 };

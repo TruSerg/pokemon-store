@@ -1,14 +1,20 @@
 const styles = () => ({
+  pokemonsWrapper: {
+    padding: "30px 0 50px 0",
+  },
+
   cardsArea: {
     display: "flex",
     flexWrap: "wrap",
     minHeight: "100vh",
     margin: "0 -10px",
+    marginBottom: "20px",
   },
 
   title: {
     textAlign: "center",
     marginBottom: "20px",
+    fontSize: "28px",
   },
 
   card: {

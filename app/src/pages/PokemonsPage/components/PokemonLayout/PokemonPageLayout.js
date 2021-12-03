@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import { CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Container } from "@mui/material";
 import { withStyles } from "@mui/styles";
 
 import MaterialCard from "../../../../commonComponents/MaterialCard";
@@ -21,46 +21,48 @@ const PokemonPageLayout = ({
   classes,
 }) => {
   return (
-    <div>
-      <h1 className={classes.title}>POKEMONS</h1>
-      <div className={classes.cardsArea}>
-        {isLoading ? (
-          <div className={classes.progressArea}>
-            <CircularProgress />
-          </div>
-        ) : (
-          <List
-            items={pokemonList}
-            renderItems={(pokemon) => {
-              const isAddItemToCart =
-                cartItems.findIndex((item) => item.id === pokemon.id) !== -1;
-              return (
-                <div key={pokemon.id} className={classes.card}>
-                  <MaterialCard
-                    name={pokemon.name}
-                    image={pokemon.image}
-                    price={pokemon.price}
-                    handleGoToDetails={() => handleGoToDetails(pokemon.id)}
-                    handleAddPokemonToCart={() =>
-                      handleAddPokemonToCart(pokemon)
-                    }
-                    isAddPokemonToCart={isAddItemToCart}
-                    handleGoToCartPage={handleGoToCartPage}
-                  />
-                </div>
-              );
-            }}
+    <Box className={classes.pokemonsWrapper}>
+      <Container>
+        <h1 className={classes.title}>POKEMONS</h1>
+        <Box className={classes.cardsArea}>
+          {isLoading ? (
+            <Box className={classes.progressArea}>
+              <CircularProgress />
+            </Box>
+          ) : (
+            <List
+              items={pokemonList}
+              renderItems={(pokemon) => {
+                const isAddItemToCart =
+                  cartItems.findIndex((item) => item.id === pokemon.id) !== -1;
+                return (
+                  <Box key={pokemon.id} className={classes.card}>
+                    <MaterialCard
+                      name={pokemon.name}
+                      image={pokemon.image}
+                      price={pokemon.price}
+                      handleGoToDetails={() => handleGoToDetails(pokemon.id)}
+                      handleAddPokemonToCart={() =>
+                        handleAddPokemonToCart(pokemon)
+                      }
+                      isAddPokemonToCart={isAddItemToCart}
+                      handleGoToCartPage={handleGoToCartPage}
+                    />
+                  </Box>
+                );
+              }}
+            />
+          )}
+        </Box>
+        <div className={classes.paginationArea}>
+          <CustomPagination
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+            pageCount={20}
           />
-        )}
-      </div>
-      <div className={classes.paginationArea}>
-        <CustomPagination
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-          pageCount={20}
-        />
-      </div>
-    </div>
+        </div>
+      </Container>
+    </Box>
   );
 };
 

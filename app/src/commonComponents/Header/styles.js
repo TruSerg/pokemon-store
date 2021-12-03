@@ -1,10 +1,9 @@
 const styles = () => ({
-  wrapper: {
+  headerWrapper: {
     display: "flex",
     alignItems: "center",
     minHeight: "80px",
     backgroundColor: "orange",
-    marginBottom: "30px",
   },
 
   wrapperNav: {
@@ -14,6 +13,10 @@ const styles = () => ({
   },
 
   wrapperLogin: {},
+
+  icon: {
+    marginRight: "30px",
+  },
 });
 
 export default styles;

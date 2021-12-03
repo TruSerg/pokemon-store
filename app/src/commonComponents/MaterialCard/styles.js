@@ -1,15 +1,13 @@
 const styles = () => ({
-  wrapper: {
-    minWidth: "192px",
-    minHeight: "430px",
-    backgroundColor: "red",
+  cardWrapper: {
+    minWidth: "188px",
+    minHeight: "435px",
     display: "flex",
     flexDirection: "column",
-    transition: "all easy 0.9s",
+    transition: "all 0.9s easy",
     border: "1px solid gray",
 
     "&:hover": {
-      transition: "all 0.5s easy",
       boxShadow: "4px 6px 5px rgba(0, 0, 0, 0.5)",
       color: "red",
       backgroundColor: "yellow",
@@ -18,6 +16,7 @@ const styles = () => ({
 
   image: {
     height: "180px",
+    cursor: "pointer",
 
     "&:img": {
       display: "block",
@@ -39,12 +38,7 @@ const styles = () => ({
   price: {},
 
   btn: {
-    textAlign: "center",
     width: "150px",
-    backgroundColor: "purple[500]",
-    "&:hover": {
-      backgroundColor: "purple[700]",
-    },
   },
 });
 export default styles;

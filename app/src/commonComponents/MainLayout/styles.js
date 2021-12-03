@@ -1,8 +1,3 @@
-const styles = () => ({
-  wrapper: {
-    padding: "0 15px",
-    margin: "0 auto",
-  },
-});
+const styles = () => ({});
 
 export default styles;

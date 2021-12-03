@@ -10,6 +10,7 @@ const styles = () => ({
     justifyContent: "center",
     alignItems: "center",
     minHeight: "75vh",
+    backgroundColor: "red",
   },
 
   formArea: {
