@@ -9,7 +9,7 @@ const styles = () => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    minHeight: "100vh",
+    minHeight: "130vh",
   },
 
   form: {
@@ -18,7 +18,7 @@ const styles = () => ({
     border: "1px solid gray",
     borderRadius: "5px",
     marginBottom: "20px",
-    backgroundColor: "#eae5e5",
+    backgroundColor: "#ffd700",
   },
 
   input: {

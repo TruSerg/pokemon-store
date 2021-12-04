@@ -14,6 +14,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import { withStyles } from "@mui/styles";
 
 import styles from "./styles";
+import pikachu from "../../../../static/images/pikachu.png";
 
 const RegistrationForm = ({
   isFormValid,
@@ -27,9 +28,12 @@ const RegistrationForm = ({
   classes,
 }) => {
   return (
-    <Box className={classes.wrapper}>
+    <Box
+      style={{ backgroundImage: `url(${pikachu})` }}
+      className={classes.wrapper}
+    >
       <Box className={classes.form}>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} id="myForm">
           <Box>
             <Input
               type="email"
@@ -95,10 +99,12 @@ const RegistrationForm = ({
           {error && <Box className={classes.error}>{error}!</Box>}
           <Box className={classes.button}>
             <Button
-              variant="outlined"
+              variant="contained"
+              color="error"
               className={classes.btn}
               disabled={!isFormValid}
-              role="submit"
+              type="submit"
+              form="myForm"
             >
               SIGNUP
             </Button>
@@ -109,14 +115,14 @@ const RegistrationForm = ({
         <Snackbar open={isOpen} onClose={handleClose}>
           <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
             Your profile has been successfully created
-            <button
+            <Button
               onClick={handleGoToLoginPage}
               variant="contained"
               color="success"
               size="small"
             >
               LOGIN
-            </button>
+            </Button>
           </Alert>
         </Snackbar>
       </Box>

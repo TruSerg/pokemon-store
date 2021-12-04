@@ -31,25 +31,25 @@ const Header = ({ classes }) => {
           <Box className={classes.wrapperNav}>
             <Box>
               <Link to={ROUTES.POKEMONS_PAGE}>
-                <IconButton>
+                <IconButton color="success">
                   <SettingsBackupRestoreRoundedIcon />
                 </IconButton>
               </Link>
             </Box>
             <Box className={classes.wrapperLink}>
               <Link to={ROUTES.CART_PAGE}>
-                <IconButton>
-                  <Badge badgeContent={quantity} color="success">
+                <IconButton color="success">
+                  <Badge badgeContent={quantity} color="error">
                     <ShoppingCartOutlined />
                   </Badge>
                 </IconButton>
               </Link>
               <Link to={ROUTES.USER_PAGE}>
-                <IconButton>
+                <IconButton color="success">
                   <PersonOutline />
                 </IconButton>
               </Link>
-              <IconButton onClick={handleLogout}>
+              <IconButton color="success" onClick={handleLogout}>
                 <Logout />
               </IconButton>
             </Box>
@@ -57,13 +57,13 @@ const Header = ({ classes }) => {
         ) : (
           <Box className={classes.wrapperLogin}>
             <Link to={ROUTES.LOGIN}>
-              <IconButton>
+              <IconButton color="success">
                 <Login />
               </IconButton>
             </Link>
 
             <Link to={ROUTES.REGISTRATION}>
-              <IconButton>
+              <IconButton color="success">
                 <HowToReg />
               </IconButton>
             </Link>

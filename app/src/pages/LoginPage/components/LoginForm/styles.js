@@ -1,16 +1,15 @@
 const styles = () => ({
-  progressArea: {
-    display: "flex",
-    alignItems: "center",
-    margin: "0 auto",
-  },
-
   wrapper: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    minHeight: "75vh",
-    backgroundColor: "red",
+    minHeight: "130vh",
+  },
+
+  progressArea: {
+    display: "flex",
+    alignItems: "center",
+    margin: "0 auto",
   },
 
   formArea: {
@@ -18,12 +17,14 @@ const styles = () => ({
     borderRadius: "5px",
     padding: "20px",
     marginBottom: "20px",
-    backgroundColor: "#e8e2e2",
+    backgroundColor: "#ffd700",
   },
 
-  form: {
-    marginBottom: "20px",
+  error: {
+    color: "red",
   },
+
+  form: {},
 
   input: {
     marginBottom: "20px",
@@ -31,15 +32,6 @@ const styles = () => ({
 
   button: {
     textAlign: "center",
-    marginBottom: "20px",
-
-    "&:last-child": {
-      marginBottom: "0",
-    },
-  },
-
-  btn: {
-    minWidth: "100px",
   },
 });
 

@@ -1,9 +1,14 @@
 import PropTypes from "prop-types";
 
+import { Link } from "react-router-dom";
+
 import { Box, Button, CircularProgress, Input } from "@mui/material";
 import { withStyles } from "@mui/styles";
 
+import { ROUTES } from "../../../../routes/routeNames";
+
 import styles from "./styles";
+import pikachu from "../../../../static/images/pikachu.png";
 
 const LoginFormLayout = ({
   isLoading,
@@ -15,10 +20,13 @@ const LoginFormLayout = ({
   classes,
 }) => {
   return (
-    <Box className={classes.wrapper}>
+    <Box
+      style={{ backgroundImage: `url(${pikachu})` }}
+      className={classes.wrapper}
+    >
       <Box className={classes.formArea}>
         <Box className={classes.form}>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit} id="myForm">
             <Box>
               <Input
                 type="email"
@@ -39,16 +47,18 @@ const LoginFormLayout = ({
             </Box>
 
             <Box className={classes.button}>
-              <button
-                variant="outlined"
+              <Button
+                variant="contained"
+                color="success"
                 className={classes.btn}
                 disabled={!isFormValid}
-                role="submit"
+                type="submit"
+                form="myForm"
               >
                 LOGIN
-              </button>
+              </Button>
             </Box>
-            {error && <div>{error}</div>}
+            {error && <div className={classes.error}>{error}</div>}
           </form>
         </Box>
       </Box>

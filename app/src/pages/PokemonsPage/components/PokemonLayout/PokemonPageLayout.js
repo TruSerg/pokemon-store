@@ -8,6 +8,8 @@ import CustomPagination from "../../../../commonComponents/CustomPagination";
 import List from "../../../../commonComponents/List";
 
 import styles from "./styles";
+import pixelPokemons from "../../../../static/images/pixelPokemons.jpg";
+import backCart from "../../../../static/images/backCart.png";
 
 const PokemonPageLayout = ({
   pokemonList,
@@ -21,9 +23,11 @@ const PokemonPageLayout = ({
   classes,
 }) => {
   return (
-    <Box className={classes.pokemonsWrapper}>
+    <Box
+      style={{ backgroundImage: `url(${backCart})` }}
+      className={classes.pokemonsWrapper}
+    >
       <Container>
-        <h1 className={classes.title}>POKEMONS</h1>
         <Box className={classes.cardsArea}>
           {isLoading ? (
             <Box className={classes.progressArea}>

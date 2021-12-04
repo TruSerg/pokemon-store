@@ -69,8 +69,8 @@ const MaterialCard = ({
           <Button
             className={classes.btn}
             onClick={handleGoToCartPage}
-            variant="outlined"
-            color="success"
+            variant="contained"
+            color="error"
             size="small"
           >
             IN THE CART

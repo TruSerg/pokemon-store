@@ -9,8 +9,8 @@ const styles = () => ({
 
     "&:hover": {
       boxShadow: "4px 6px 5px rgba(0, 0, 0, 0.5)",
-      color: "red",
-      backgroundColor: "yellow",
+      color: "#FF0000",
+      backgroundColor: "#7FFFD4",
     },
   },
 

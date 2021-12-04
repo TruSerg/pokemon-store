@@ -30,9 +30,9 @@ const RegistrationPageContainer = () => {
     passwordConfirm: "",
   });
   const isEmailValid = isEmail(formData.email);
-  const isFirstNameValid = formData.firstName.length > 0;
-  const isLastNameValid = formData.lastName.length > 0;
-  const isGenderValid = formData.gender.length > 0;
+  const isFirstNameValid = formData.firstName.toLowerCase().length > 0;
+  const isLastNameValid = formData.lastName.toLowerCase().length > 0;
+  const isGenderValid = formData.gender.toLowerCase().length > 0;
   const isPhoneValid = formData.phone.length > 0;
   const isPasswordValid = formData.password.length > 0;
   const isPasswordConfirmValid = formData.passwordConfirm.length > 0;
