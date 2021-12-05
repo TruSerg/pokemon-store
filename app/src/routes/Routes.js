@@ -1,5 +1,6 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 
+import HomePage from "../pages/HomePage";
 import PokemonPageContainer from "../pages/PokemonsPage/containers/PokemonPageContainer";
 import PokemonDetailsPageContainer from "../pages/PokemonDetailedPage/containers/PokemonDetailsPageContainer";
 import LoginPageContainer from "../pages/LoginPage/containers/LoginPageContainer";
@@ -13,7 +14,8 @@ import RegistrationPageContainer from "../pages/RegistrationPage/containers/Regi
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path={ROUTES.LOGIN} component={LoginPageContainer} />
+      <Route exact path={ROUTES.HOME} component={HomePage} />
+      <Route path={ROUTES.LOGIN} component={LoginPageContainer} />
       <Route path={ROUTES.REGISTRATION} component={RegistrationPageContainer} />
       <PrivateRoute
         exact

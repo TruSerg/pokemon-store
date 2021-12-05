@@ -1,7 +1,10 @@
 const styles = () => ({
   pokemonsWrapper: {
-    padding: "100px 0 50px 0",
+    padding: "50px 0 50px 0",
+    background: "linear-gradient(155deg,#0865d5,#07df24,#e6ab12)",
   },
+
+  orderTitle: { textAlign: "center", fontSize: "30px", marginBottom: "30px" },
 
   cardsArea: {
     display: "flex",

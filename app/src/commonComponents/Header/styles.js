@@ -3,7 +3,7 @@ const styles = () => ({
     display: "flex",
     alignItems: "center",
     minHeight: "80px",
-    backgroundColor: "orange",
+    background: "linear-gradient(90deg,#f6e641,#87b27a,#0ae762)",
   },
 
   wrapperNav: {
@@ -11,8 +11,6 @@ const styles = () => ({
     flex: "1 1 auto",
     justifyContent: "space-between",
   },
-
-  wrapperLogin: {},
 
   icon: {
     marginRight: "30px",

@@ -1,9 +1,14 @@
 import PropTypes from "prop-types";
 
-import { Box, CircularProgress, Container } from "@mui/material";
+import {
+  Box,
+  Button,
+  CardActions,
+  CircularProgress,
+  Container,
+  Typography,
+} from "@mui/material";
 import { withStyles } from "@mui/styles";
-
-import MaterialCardDetail from "../../../../commonComponents/MaterialCardDetail";
 
 import styles from "./styles";
 
@@ -21,39 +26,70 @@ const PokemonDetailsPageLayout = ({
   return (
     <Box className={classes.detailsWrapper}>
       <Container>
-        <h1 className={classes.detailTitle}>POKEMON DETAILS</h1>
-        <Box>
+        <h1 className={classes.detailsTitle}>POKEMON DETAILS</h1>
+        <Box className={classes.detailsWrapperInfo}>
           {isLoading ? (
             <Box className={classes.progressArea}>
               <CircularProgress />
             </Box>
           ) : (
-            <Box>
-              <Box className={classes.cardArea}>
-                <MaterialCardDetail
-                  key={info.id}
-                  name={info.name}
-                  image={info.image}
-                  price={info.price}
-                  handleAddPokemonToCart={() =>
-                    handleAddPokemonToCart(addPokemonToCart)
-                  }
-                  isAddPokemonToCart={isAddPokemonToCart}
-                  handleGoToCartPage={handleGoToCartPage}
-                />
+            <Box key={info.id} className={classes.pokemonInfoWrapper}>
+              <Box className={classes.pokemonWrapper}>
+                <Box>
+                  <img
+                    className={classes.pokemonImg}
+                    src={info.image}
+                    alt={info.name}
+                  />
+                </Box>
+                <Box className={classes.pokemonName}>
+                  <Typography variant="h5" component="p">
+                    {info.name}
+                  </Typography>
+                </Box>
+                <Box className={classes.pokemonPrice}>
+                  <Typography variant="h6" component="p">
+                    Price: {info.price} coins
+                  </Typography>
+                </Box>
+
+                <Box>
+                  {!isAddPokemonToCart ? (
+                    <Button
+                      className={classes.btn}
+                      onClick={() => handleAddPokemonToCart(addPokemonToCart)}
+                      variant="outlined"
+                      size="small"
+                      color="success"
+                    >
+                      ADD TO CART
+                    </Button>
+                  ) : (
+                    <Button
+                      className={classes.btn}
+                      onClick={handleGoToCartPage}
+                      variant="contained"
+                      size="small"
+                      color="error"
+                    >
+                      IN THE CART
+                    </Button>
+                  )}
+                </Box>
               </Box>
+
               <Box className={classes.wrapperInfo}>
-                <h2>ABILITIES</h2>
+                <h2 className={classes.infoTitle}>ABILITIES</h2>
                 {abilities?.map(({ title, description }) => (
-                  <Box key={title}>
-                    <h3>{title}</h3>
+                  <Box className={classes.infoDetails} key={title}>
+                    <h3 className={classes.infoDetailsTitle}>{title}</h3>
                     <p>{description}</p>
                   </Box>
                 ))}
-                <h2>STATS</h2>
+                <h2 className={classes.infoTitle}>STATS</h2>
                 {stats?.map(({ title, value }) => (
                   <Box key={title}>
-                    <p>
+                    <p className={classes.infoStats}>
                       {title} : {value}
                     </p>
                   </Box>

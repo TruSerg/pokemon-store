@@ -96,7 +96,7 @@ const RegistrationForm = ({
               onChange={onChange}
             />
           </Box>
-          {error && <Box className={classes.error}>{error}!</Box>}
+          {error && <Box className={classes.error}>{error}!!!</Box>}
           <Box className={classes.button}>
             <Button
               variant="contained"
@@ -111,21 +111,23 @@ const RegistrationForm = ({
           </Box>
         </form>
       </Box>
-      <Box className={classes.snackBar}>
-        <Snackbar open={isOpen} onClose={handleClose}>
-          <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
-            Your profile has been successfully created
-            <Button
-              onClick={handleGoToLoginPage}
-              variant="contained"
-              color="success"
-              size="small"
-            >
-              LOGIN
-            </Button>
-          </Alert>
-        </Snackbar>
-      </Box>
+      {!error && (
+        <Box className={classes.snackBar}>
+          <Snackbar open={isOpen} onClose={handleClose}>
+            <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
+              Your profile has been successfully created{" "}
+              <Button
+                onClick={handleGoToLoginPage}
+                variant="contained"
+                color="success"
+                size="small"
+              >
+                LOGIN
+              </Button>
+            </Alert>
+          </Snackbar>
+        </Box>
+      )}
     </Box>
   );
 };

@@ -8,7 +8,6 @@ import CheckIcon from "@mui/icons-material/Check";
 import List from "../../../../commonComponents/List";
 
 import styles from "./styles";
-import backCart from "../../../../static/images/backCart.png";
 
 const CartPageLayout = ({
   isLoading,
@@ -64,7 +63,7 @@ const CartPageLayout = ({
                       <Button
                         className={classes.cardButton}
                         variant="outlined"
-                        color="success"
+                        color="error"
                         size="small"
                         onClick={() => handleDeletePokemonFromCart(item.id)}
                       >

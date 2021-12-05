@@ -36,7 +36,7 @@ const Header = ({ classes }) => {
                 </IconButton>
               </Link>
             </Box>
-            <Box className={classes.wrapperLink}>
+            <Box>
               <Link to={ROUTES.CART_PAGE}>
                 <IconButton color="success">
                   <Badge badgeContent={quantity} color="error">
@@ -55,7 +55,7 @@ const Header = ({ classes }) => {
             </Box>
           </Box>
         ) : (
-          <Box className={classes.wrapperLogin}>
+          <Box>
             <Link to={ROUTES.LOGIN}>
               <IconButton color="success">
                 <Login />

@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 import { Box, Button, CircularProgress, Input } from "@mui/material";
 import { withStyles } from "@mui/styles";
 
-import { ROUTES } from "../../../../routes/routeNames";
-
 import styles from "./styles";
 import pikachu from "../../../../static/images/pikachu.png";
 
@@ -18,6 +16,7 @@ const LoginFormLayout = ({
   onSubmit,
   error,
   classes,
+  handleGoToRegistrationPage,
 }) => {
   return (
     <Box
@@ -58,7 +57,17 @@ const LoginFormLayout = ({
                 LOGIN
               </Button>
             </Box>
-            {error && <div className={classes.error}>{error}</div>}
+            <Box className={classes.button}>
+              <Button
+                onClick={handleGoToRegistrationPage}
+                variant="contained"
+                color="error"
+                className={classes.btn}
+              >
+                SIGNUP
+              </Button>
+            </Box>
+            {error && <div className={classes.error}>{error}!!!</div>}
           </form>
         </Box>
       </Box>

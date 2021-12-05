@@ -42,6 +42,10 @@ const LoginPageContainer = () => {
     }
   }, [isAuth]);
 
+  const handleGoToRegistrationPage = useCallback(() => {
+    history.push(ROUTES.REGISTRATION);
+  }, []);
+
   return (
     <LoginFormLayout
       isLoading={isLoading}
@@ -50,6 +54,7 @@ const LoginPageContainer = () => {
       onChange={handleChange}
       onSubmit={handleSubmit}
       error={error}
+      handleGoToRegistrationPage={handleGoToRegistrationPage}
     />
   );
 };

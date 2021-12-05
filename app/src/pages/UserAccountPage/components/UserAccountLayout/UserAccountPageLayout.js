@@ -34,29 +34,27 @@ const UserAccountPageLayout = ({
     <Box className={classes.userWrapper}>
       <Container>
         <h1 className={classes.accountTitle}>PERSONAL ACCOUNT</h1>
-        <Box>
-          <Box className={classes.accountInfo}>
-            <CardContent>
-              <h2 className={classes.accountSubtitle}>PERSONAL DATA</h2>
-              <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-                {`${info.firstName} ${info.lastName}`}
-              </Typography>
-              <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-                {`Email: ${info.email}`}
-              </Typography>
-              <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-                {`Phone: ${info.phone}`}
-              </Typography>
-              <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-                {`Gender: ${info.gender}`}
-              </Typography>
-            </CardContent>
-          </Box>
+        <Box className={classes.accountInfo}>
+          <CardContent>
+            <h2 className={classes.accountSubtitle}>PERSONAL DATA</h2>
+            <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+              {`${info.firstName} ${info.lastName}`}
+            </Typography>
+            <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+              {`Email: ${info.email}`}
+            </Typography>
+            <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+              {`Phone: ${info.phone}`}
+            </Typography>
+            <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+              {`Gender: ${info.gender}`}
+            </Typography>
+          </CardContent>
         </Box>
         {ordersList?.map((order) => (
           <Box key={order._id}>
             <Box className={classes.accordion}>
-              <Accordion>
+              <Accordion color="success">
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"

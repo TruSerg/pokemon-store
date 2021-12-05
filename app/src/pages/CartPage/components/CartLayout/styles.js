@@ -1,12 +1,13 @@
 const styles = () => ({
   cartWrapper: {
-    padding: "30px 0 50px 0",
+    padding: "50px 0 50px 0",
+    background: "linear-gradient(155deg,#0865d5,#07df24,#e6ab12)",
   },
 
   orderTitle: {
     textAlign: "center",
     marginBottom: "30px",
-    fontSize: "28px",
+    fontSize: "30px",
   },
 
   cardsArea: {
@@ -32,6 +33,13 @@ const styles = () => ({
     borderRadius: "5px",
     marginBottom: "20px",
     boxShadow: "4px 5px 4px rgba(0, 0, 0, 0.5)",
+    backgroundColor: "#00FF7F",
+    transition: "0.4s",
+
+    "&:hover": {
+      color: "#FF0000",
+      backgroundColor: "#7FFFD4",
+    },
   },
 
   cardImage: {
@@ -41,6 +49,7 @@ const styles = () => ({
   cardBtn: {
     minWidth: "26px",
     boxShadow: "2px 2px 2px rgba(0, 0, 0, 1)",
+    backgroundColor: "#ADFF2F",
 
     "&:first-child": {
       marginRight: "10px",
@@ -54,11 +63,12 @@ const styles = () => ({
 
   cardDisplay: {
     display: "inline-block",
-    minWidth: "27px",
+    minWidth: "26px",
     borderRadius: "2px",
     border: "1px solid #000",
     marginRight: "10px",
-    minHeight: "27px",
+    minHeight: "26px",
+    backgroundColor: "#ADFF2F",
   },
 
   buttons: {

@@ -22,9 +22,9 @@ const styles = () => ({
 
   error: {
     color: "red",
+    marginBottom: "10px",
+    textAlign: "center",
   },
-
-  form: {},
 
   input: {
     marginBottom: "20px",
@@ -32,6 +32,11 @@ const styles = () => ({
 
   button: {
     textAlign: "center",
+    marginBottom: "20px",
+  },
+
+  btn: {
+    width: "100px",
   },
 });
 

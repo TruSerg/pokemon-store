@@ -4,11 +4,11 @@ const styles = () => ({
     minHeight: "435px",
     display: "flex",
     flexDirection: "column",
-    transition: "all 0.9s easy",
     border: "1px solid gray",
+    transition: "0.4s",
 
     "&:hover": {
-      boxShadow: "4px 6px 5px rgba(0, 0, 0, 0.5)",
+      boxShadow: "4px 6px 5px rgba(0, 0, 0, 0.7)",
       color: "#FF0000",
       backgroundColor: "#7FFFD4",
     },
@@ -34,8 +34,6 @@ const styles = () => ({
   name: {
     fontSize: "50px",
   },
-
-  price: {},
 
   btn: {
     width: "150px",

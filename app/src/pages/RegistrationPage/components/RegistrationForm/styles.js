@@ -28,6 +28,7 @@ const styles = () => ({
   error: {
     marginBottom: "20px",
     color: "red",
+    textAlign: "center",
   },
 
   select: {
@@ -40,6 +41,10 @@ const styles = () => ({
 
   btn: {
     minWidth: "100px",
+  },
+
+  snackBar: {
+    display: "flex",
   },
 });
 

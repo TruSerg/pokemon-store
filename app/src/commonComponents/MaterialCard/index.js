@@ -39,9 +39,7 @@ const MaterialCard = ({
         >
           {name}
         </Typography>
-        <Typography className={classes.price} variant="body2">
-          Price: {price} coins
-        </Typography>
+        <Typography variant="body2">Price: {price} coins</Typography>
       </CardContent>
       <CardActions>
         <Button
